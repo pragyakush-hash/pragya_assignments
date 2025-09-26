@@ -141,10 +141,10 @@ console.log(uniqueWithReduce);  // Output: [1, 2, 3, 4, 5]
 Object.seal(person);
 
 console.log("Before sealed add", person);
-addKeyValue(sealedPerson, "age", 25);
+addKeyValue(person, "age", 25);
 console.log("After sealed add:", person);
 
-addKeyValue(person, "name", "Pedro");
+addKeyValue(person, "name", "Para");
 console.log("Modified name in sealed", person);
 
 
@@ -153,9 +153,9 @@ console.log("Modified name in sealed", person);
 const person = { name: "Pablo" };
 Object.freeze(person);
 
-console.log("Before frozen add:", person);
+console.log("Before frozen add", person);
 addKeyValue(person, "age", 25); 
-addKeyValue(person, "name", "Pedro");  
+addKeyValue(person, "name", "Para");  
 console.log("After frozen modify:", person);
 //frozen doesn't modify or chnage 
  
