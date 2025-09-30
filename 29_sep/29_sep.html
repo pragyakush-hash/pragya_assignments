@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .box {
+        padding: 20px;
+        background: lightgreen;
+        margin: 10px;
+      }
+      .inner-box {
+        padding: 20px;
+        background: lightblue;
+        cursor: pointer;
+      }
+      .inner-inner-box {
+        padding: 20px;
+        background: lightpink;
+        cursor: pointer;
+      }
+      #colorBox {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 20px;
+      }
+      #message {
+        margin-top: 20px;
+      }
+
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 20px;
+      }
+      .color-box {
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
+        border: 2px solid #000;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>DOM Manipulation Examples</h1>
+
+    <!-- Counter  -->
+    <h3>Counter: <span id="count">0</span></h3>
+    <p>Click the buttons to update the counter</p>
+    <button class="btn" id="inc">Increase by 2</button>
+    <button class="btn" id="reset">Reset the counter by 0</button>
+
+    <h3>Timer: <span id="timer">50</span></h3>
+    <p>Click the buttons to start the timer</p>
+    <button class="btn" id="timerStart">Decrease by 1 every second</button>
+    <button class="btn" id="timerReset">
+      Reset button set the timer back to 0
+    </button>
+
+    <hr />
+
+    <!-- Event Delegation  -->
+    <h3>Event Delegation</h3>
+    <ul id="parent-list">
+      <li class="list">Add Item 1</li>
+      <li class="list">Add Item 2</li>
+    </ul>
+    <button id="addItem">Add Items</button>
+
+    <hr />
+
+    <!-- Form preventDefault  -->
+    <h3>Form Example (preventDefault)</h3>
+    <form id="myForm">
+      <input
+        name="input"
+        type="text"
+        id="username"
+        placeholder="Enter your name"
+        required
+      />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p id="form-msg"></p>
+
+    <hr />
+
+    <!-- Toggle  -->
+    <h3>Toggle Example</h3>
+    <button class="btn" id="toggle-btn">Hide</button>
+    <p id="toggle-text">This paragraph can be shown/hidden.</p>
+
+    <!-- Stop Propagation  -->
+    <h3>Stop Propagation</h3>
+    <div class="box" id="outer-box">
+      Outer Box (click me)
+      <div class="inner-box" id="inner-box">
+        Inner Box
+        <div class="inner-inner-box" id="inner-inner-box">
+          Inner Inner Box (click me - stop propagation)
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- background color change -->
+
+    <button id="addParagraph">Add Paragraph</button>
+
+    <button id="removeParagraph">Remove Paragraph</button>
+
+    <div id="content"></div>
+
+    <hr />
+
+    <div id="colorBox"></div>
+    <button id="stopBtn">Stop Color Change</button>
+    <div id="message"></div>
+
+    <hr />
+    <div>
+      <button class="btn-red" id="btnRed">Red</button>
+      <button class="btn-green" id="btnGreen">Green</button>
+      <button class="btn-blue" id="btnBlue">Blue</button>
+
+      <div class="box1" id="box-one"></div>
+    </div>
+
+    <hr />
+    <div>
+      <button class="btn" id="btn-hide">Hide</button>
+      <button class="btn" id="btn-show">Show</button>
+      <p id="paragraph-text">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt
+        corporis eveniet repellat, minima tempora maiores quidem quia libero id
+        expedita amet, incidunt laborum eaque vitae tempore odit mollitia sequi
+        modi?
+      </p>
+    </div>
+
+    <hr />
+    <div>
+      <ul id="item-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+      <button id="add-item-btn">Add New Item</button>
+    </div>
+    <hr />
+
+    <div id="colorBox" class="color-box"></div>
+
+    <button data-color="red">Red</button>
+    <button data-color="blue">Blue</button>
+    <button data-color="green">Green</button>
+
+    <hr />
+    <h2>Style Manipulation</h2>
+    <p class="paragraphcontent" id="textToResize">
+      Hello my name is pragya kushwah.
+    </p>
+    <button id="increaseFontSize">Increase Font Size</button>
+    <button id="decreaseFontSize">Decrease Font Size</button>
+
+    <hr />
+    <h2>Input Validation</h2>
+    <form id="ageForm">
+      <label for="ageInput">Enter your age-> </label>
+      <input type="text" id="ageInput" />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="ageValidationMessage"></p>
+
+    <hr />
+
+    <h2>Change Text Content</h2>
+    <p id="textContenttext">
+      This is the initial text content hello pragya this side.
+    </p>
+    <button id="changeTextButton">Change Text</button>
+
+    <script src="./29_sep.js"></script>
+  </body>
+</html>
