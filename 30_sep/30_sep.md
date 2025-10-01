@@ -96,4 +96,46 @@ setTimeout(msg, 2000)
 
 //  Using `Promise.then`
 
+const delay = (ms)=>{
+  return new Promise(resolve=>setTimeout(resolve,ms))
+}
+delay(2000).then(()=>{
+  console.log("Done!")
+})
+
+// Using async / await
+const delay = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const delayFunction = async () => {
+  await delay(2000); 
+  console.log("Done!");
+}
+
+delayFunction(); 
+
+  ## 📌 Part 5: Debugging
+
+Given this snippet, fix it so that it prints in the correct order:\
+Expected: `1 → 2 → 3 → 4`
+
+js
+console.log(1);
+
+setTimeout(() => console.log(2), 0);
+
+Promise.resolve().then(() => console.log(3));
+
+console.log(4);
+
+//output 
+console.log(1);
+
+setTimeout(() => console.log(4), 0);
+
+Promise.resolve().then(() => console.log(3));
+
+console.log(2);
+
 
