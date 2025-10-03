@@ -1,0 +1,67 @@
+Which of the following is not a valid JavaScript data type?
+a) String b) Number c) Character d) Boolean
+=>Character
+
+What will the following code log?
+let x = 10;
+x += "5";
+console.log(typeof x);
+=>String
+
+What is the difference between let and const? 
+In let we can re assign the value but in constwe can't reassign value, value are constant in const.
+
+Which operator is used for spread syntax in JavaScript?
+a) ... b) ?? c) => d) **
+=>...
+
+What will this code output?
+console.log([1, 2, 3].map(n => n * 2));
+=>[2, 4, 6]
+
+Which of the following is true about arrow functions?
+a) They have their own this
+b) They cannot be anonymous
+c) They don’t have their own this
+d) They must always return explicitly
+=>c) They don’t have their own this
+
+Identify the DOM method used to select elements by class name:
+a) querySelector('#className')
+b) getElementById('className')
+c) querySelector('.className')
+d) getElementsByTagName('className')
+=>a) querySelector('#className')
+
+What is the output?
+console.log(typeof null);
+=>object
+
+Which string method removes whitespace from both ends?
+a) slice() b) trim() c) split() d) substring()
+=>trim()
+
+What does event.preventDefault() do?
+=>prevent for refreshing the page or
+ in  our form values are lost when we submit the form so we use prevant default for not refreshing page.
+
+ Which method can be used to iterate over arrays without creating a new array?
+a) map b) filter c) forEach d) reduce
+=>forEach
+
+What will be the output?
+const arr = [1,2,3];
+const newArr = [...arr, 4];
+console.log(newArr);
+=>[1,2,3,4]
+
+What is the difference between synchronous and asynchronous code in JS? 
+=>synchronous code are excute line by line or we can say that it is a blocking of code. they wait for the code to execute and then they run another code,
+But In asynchronous code are excute asynchronously without blocking the main thread. 
+
+Which of the following executes first in the event loop?
+a) setTimeout callback b) Promise .then() c) fetch response d) DOMContentLoaded
+=>Promise .then() 
+
+What is the purpose of destructuring in JavaScript? 
+=>To store a value in a separate variable so we can access easyly.
