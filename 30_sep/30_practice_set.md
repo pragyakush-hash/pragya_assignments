@@ -150,8 +150,8 @@ code
 
 
 
-Question:
-What’s the difference between these two approaches? Which one is shallow and which is deep?
+<!-- Question:
+What’s the difference between these two approaches? Which one is shallow and which is deep? -->
 const arr = [[1], [2], [3]];
 const copy1 = arr.slice();  slice create a shallow copy
 const copy2 = JSON.parse(JSON.stringify(arr)); this are used to create a deep copy

@@ -31,32 +31,62 @@ reloadBtn.addEventListener("click", () => {
   fetchFunction();
 });
 
-const renderCards = (users) => {
-  const carContainer = document.getElementById("output");
+// const renderCards = (users) => {
+//   const carContainer = document.getElementById("output");
 
-  users.slice(0, 5).forEach((user) => {
+//   users.slice(0, 5).forEach((user) => {
+//     const card = document.createElement("div");
+//     card.classList.add("skeleton");
+//     card.innerHTML = `
+//         <h3>${user.name}</h3> 
+//         <p>${user.email}</p>
+//         <p>${user.phone}</p>`;
+
+//     carContainer.appendChild(card);
+//   });
+// };
+
+const renderCards = (users)=>{
+  const carContainer = document.getElementById('output');
+  users.slice(0,5).forEach((user)=>{
     const card = document.createElement("div");
-    card.classList.add("skeleton");
-    card.innerHTML = `
-        <h3>${user.name}</h3> 
-        <p>${user.email}</p>
-        <p>${user.phone}</p>`;
+      card.classList.add("skeleton");
+      card.innerHTML = `
+      <h3>${user.name}</h3>
+      <p>${user.email}</p>
+      <p>${user.phone}</p>`
+      carContainer.append(card)
+      
+  })
 
-    carContainer.appendChild(card);
-  });
-};
+}
 
-const showSkeletons = () => {
-  for (let i = 0; i < 4; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-      <div class="skeleton" style="width: 80%"></div>
-      <div class="skeleton" style="width: 60%"></div>
-      <div class="skeleton" style="width: 90%"></div>
-    `;
-    outputContainer.appendChild(card);
-  }
-};
+
+// const showSkeletons = () => {
+//   for (let i = 0; i < 4; i++) {
+//     const card = document.createElement("div");
+//     card.classList.add("card");
+//     card.innerHTML = `
+//       <div class="skeleton" style="width: 80%"></div>
+//       <div class="skeleton" style="width: 60%"></div>
+//       <div class="skeleton" style="width: 90%"></div>
+//     `;
+//     outputContainer.appendChild(card);
+//   }
+// };
 
 showSkeletons();
+
+
+const showSkeletons = ()=>{
+  for(let i =0;i<4;i++){
+    const card = document.createElement("div");
+    card.classList.add("card")
+    card.innerHTML= `
+      <div class="skeleton" style="width: 80%"></div>
+        <div class="skeleton" style="width: 80%"></div>`
+        outputContainer.appendChild(card)
+
+  }
+};
+showSkeletons()
