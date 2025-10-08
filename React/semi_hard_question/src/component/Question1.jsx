@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Question1 = () => {
     const [count, setCount] = useState(0)
     const [runningCount, setRunningCount] = useState(true)
 
-    let id = null;
+    let id = useRef(null) ;
+
+    console.log(id, 3)
+
+    // useEffect(()=>{
+
+    // })
     
     useEffect(()=>{
         if(runningCount){
-         id = setInterval(() => {
+            console.log(id.current, 1)
+         id.current = setInterval(() => {
+            console.log('i am the problem')
             setCount((prev)=>prev+1)
-        }, 100);
+        }, 1000);
         }
         return(()=>{
-            if(id){
-            clearInterval(id)
+            console.log(id.current, 2,"unmounting....")
+            if(id.current){
+            clearInterval(id.current)
             }
         })
-    },[runningCount])
+    },[])
 
     const handleStart = ()=>{
         setRunningCount(true)

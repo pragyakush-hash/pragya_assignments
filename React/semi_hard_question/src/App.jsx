@@ -20,6 +20,7 @@ const handleOnClick = ()=>{
 }
   return (
     <>
+    <Question1/>
       <Question2_child
         pCount={pCount}
         incrementParent={incrementParent}
