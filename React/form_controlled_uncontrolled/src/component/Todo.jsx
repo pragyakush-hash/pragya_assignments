@@ -97,20 +97,19 @@ import { todoListData } from "../constant/dummy";
 import "./Todo.css";
 const Todo = () => {
   const [data, setData] = useState(todoListData);
-  const [inputtitle, setInputTitle] = useState("")
-  console.log(inputtitle)
-  const [inputdescription, setInputDescription] = useState("")
-  console.log(inputdescription)
+  const [inputtitle, setInputTitle] = useState("");
+  console.log(inputtitle);
+  const [inputdescription, setInputDescription] = useState("");
+  console.log(inputdescription);
 
-  const handleAddItems = ()=>{
+  const handleAddItems = () => {
     const newItem = {
-        title : inputtitle,
-        description : inputdescription,
-    }
-    setData((prev)=>[...prev,newItem])
-    console.log(data)
-  }
-
+      title: inputtitle,
+      description: inputdescription,
+    };
+    setData((prev) => [...prev, newItem]);
+    console.log(data);
+  };
 
   return (
     <>
@@ -119,10 +118,23 @@ const Todo = () => {
       </div>
       <div className="card-add-details">
         <label>
-          Add Title:- <input type="text" className="title-input" name="title" value={inputtitle} onChange={(e)=>setInputTitle(e.target.value)}/>
+          Add Title:-{" "}
+          <input
+            type="text"
+            className="title-input"
+            name="title"
+            value={inputtitle}
+            onChange={(e) => setInputTitle(e.target.value)}
+          />
         </label>
         <label>
-          Add Des :- <textarea placeholder="Enter description " name="description" value={inputdescription} onChange={(e)=>setInputDescription(e.target.value)} />
+          Add Des :-{" "}
+          <textarea
+            placeholder="Enter description "
+            name="description"
+            value={inputdescription}
+            onChange={(e) => setInputDescription(e.target.value)}
+          />
         </label>
         <label>
           Add Priority:-{" "}
@@ -133,7 +145,9 @@ const Todo = () => {
           </select>
         </label>
       </div>
-      <button className="btn-add" onClick={handleAddItems}>Add All Details</button>
+      <button className="btn-add" onClick={handleAddItems}>
+        Add All Details
+      </button>
       <div></div>
       <div className="container-card">
         {data.map((item) => (
