@@ -13,16 +13,16 @@ import Medium2 from './component/Medium2'
 const App = () => {
   return (
     <div>
-      {/* <Question1/> */}
-      {/* <Question2/> */}
-      {/* <Question3/> */}
-      {/* <Medium1/> */}
+      <Question1/>
+      <Question2/>
+      <Question3/>
+      <Medium1/>
       <Medium2/>
-      {/* <Medium3/> */}
-      {/* <Semi_hard1/> */}
-      {/* <Semi_hard2/> */}
-      {/* <Semi_hard3/> */}
-      {/* <Bonus/> */}
+      <Medium3/>
+      <Semi_hard1/>
+      <Semi_hard2/>
+      <Semi_hard3/>
+      <Bonus/>
     </div>
   )
 }
