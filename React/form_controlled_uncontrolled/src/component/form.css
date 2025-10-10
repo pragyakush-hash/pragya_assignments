@@ -1,0 +1,38 @@
+.multiple-form{
+    justify-items: center;
+}
+.form{
+    border: 2px solid pink;
+    border-radius: 8px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    background-color: aliceblue;
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+input{
+    height: 20px;
+    border-radius: 5px;
+}
+.input-age{
+    margin-left: 30px;
+}
+.input-phone{
+    margin-left: 8px;
+}
+.input-password{
+    margin-left: 5px;
+}
+button{
+    background-color: lightpink;
+    width: 100px;
+    border-radius: 5px;
+    height: 30px;
+}

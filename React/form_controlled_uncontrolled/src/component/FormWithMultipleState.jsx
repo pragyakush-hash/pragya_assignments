@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import './form.css'
 
 const FormWithMultipleState = ({ref}) => {
   const [firstName, setFirstName] = useState("");
@@ -25,12 +26,12 @@ const FormWithMultipleState = ({ref}) => {
     // console.log("age", ref.current.value);
   };
   return (
-    <div className="container text-center ">
+    <div className="multiple-form ">
       <div className="mb-3">
         <h2>Form with using multiple state</h2>
       </div>
-      <div>
-        <form className="" onSubmit={handleSubmit}>
+      <div  className="form">
+        <form onSubmit={handleSubmit} className="form-input">
           <div className="mb-3">
             <label className="form-label">
               FirstName:-{" "}
@@ -68,6 +69,7 @@ const FormWithMultipleState = ({ref}) => {
             <label>
               PhoneNo:-
               <input
+              className="input-phone"
                 type="number"
                 value={phoneNo}
                 placeholder="enter 10 digit no."
@@ -79,6 +81,7 @@ const FormWithMultipleState = ({ref}) => {
             <label>
               Password:-
               <input
+              className="input-password"
                 type="password"
                 value={password}
                 placeholder="enter strong password"
@@ -92,12 +95,12 @@ const FormWithMultipleState = ({ref}) => {
               <input
                 type="number"
                 placeholder="enter your age"
-                className="ml-3"
+                className="input-age"
                 ref={ref}
               />
             </label>
           </div>
-          <button type="submit" className="btn btn-info">
+          <button type="submit" className="btn-submit">
             Submit
           </button>
         </form>
