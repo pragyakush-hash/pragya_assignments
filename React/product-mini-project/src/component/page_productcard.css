@@ -1,0 +1,9 @@
+.page_productcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border : 1px solid black;
+    height : 200px;
+    width: 200px;
+    
+}

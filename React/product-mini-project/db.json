@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Wireless Mouse",
+      "price": 15.99,
+      "description": "Smooth and responsive"
+    },
+    {
+      "id": "2",
+      "name": "Mechanical Keyboard",
+      "price": 45.5,
+      "description": "Tactile and durable"
+    },
+    {
+      "description": "Immersive sound",
+      "id": "3",
+      "name": "pragya kushwah",
+      "price": "kushwah"
+    }
+  ]
+}
