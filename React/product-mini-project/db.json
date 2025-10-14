@@ -2,18 +2,18 @@
   "products": [
     {
       "id": "1",
-      "name": "Wireless Mouse dash",
+      "name": "Wireless ",
       "price": 15.99,
-      "description": "Smooth and responsive"
+      "description": "Smooth and "
     },
     {
       "id": "2",
-      "name": "Mechanical keybord cabel",
-      "price": "50",
-      "description": "Tactile and durable"
+      "name": "Mechanical keybor cabel",
+      "price": "6773",
+      "description": "Tactile and durable333"
     },
     {
-      "description": "",
+      "description": "Immersive sound",
       "id": "3",
       "name": "product 3",
       "price": "50"

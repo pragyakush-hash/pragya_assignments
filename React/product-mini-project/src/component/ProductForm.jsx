@@ -50,25 +50,25 @@ const ProductForm = () => {
   // const result  = productData.find(item => item.id === id) || {};
   // console.log(result,"result ara hai?")
   return (
-    <div className="">
+    <div className="page--productconatiner">
       <form className="page--productform" onSubmit={handleSubmit}>
-        <label>
+        <label className="input-group">
           Id:-
-          <input value={productData.id} name="id" />
+          <input value={productData.id} name="id" type="number" />
         </label>
-        <label>
-          Edit Name:- <input name="name" value={productData.name} onChange={handleChange} />
+        <label className="input-group">
+          Edit Name:- <input name="name" value={productData.name} onChange={handleChange} type="text" />
         </label>
-        <label>
+        <label className="input-group">
           Edit Price
-          <input value={productData.price} name="price" onChange={handleChange} />
+          <input value={productData.price} name="price" onChange={handleChange} type="number" />
         </label>
 
-        <label>
+        <label className="input-group">
           Edit Description
-          <input value={productData.description} name="description" onChange={handleChange} />
+          <input value={productData.description} name="description" onChange={handleChange}  type="text"/>
         </label>
-        <button type="submit" onClick={handleClick} >Save</button>
+        <button className="btn-class" type="submit" onClick={handleClick} >Save</button>
       </form>
     </div>
   );

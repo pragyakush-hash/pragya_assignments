@@ -1,31 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "../pages/Home"
-import About from "../pages/About"
-import Login from "../pages/Login"
-import './navbar.css'
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Login from "../pages/Login";
+import "./navbar.css";
 import ProductDetail from "../pages/ProductDetail";
 import ProductForm from "./ProductForm";
-
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { logout , isAuthenticated } = useContext(AuthContext);
   return (
-    <BrowserRouter>
+    <>
       {/* Navigation */}
       <nav className="navbar">
+        <Link to="/login">Login</Link>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/login">Login</Link>
+        <button onClick={()=>logout()}>{isAuthenticated ? "Logout":"Login"}</button>
       </nav>
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/products/:id" element={<ProductDetail/>}/>
-        <Route path="/products/:id/edit" element={<ProductForm/>} />
-      </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 

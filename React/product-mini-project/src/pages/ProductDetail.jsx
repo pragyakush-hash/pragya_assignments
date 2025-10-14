@@ -28,10 +28,12 @@ const ProductDetail = () => {
 
   return (
     <div className="product--productdetail">
-      {Object.entries(productData).map(([key, value]) => (
-        <p>{value}</p>
-      ))}
-      <button onClick={handleClick}>Edit</button>
+        {Object.entries(productData).map(([key, value]) => (
+          <div className="product-values">
+            <p>{value}</p>
+          </div>
+        ))}
+        <button onClick={handleClick}>Edit</button>
     </div>
   );
 };

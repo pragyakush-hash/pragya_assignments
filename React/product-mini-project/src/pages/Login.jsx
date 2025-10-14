@@ -1,66 +1,53 @@
-import React, { useRef, useState } from "react";
-import "./login.css";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import './login.css'
 
-  const validUser = {
-    username: "admin",
-    password: "1234",
-  };
 const Login = () => {
-  // const [userName, setUserName] = useState("")
-  // const [password, setPassword] = useState("")
-
-  // const usernameRef = useRef(null);
-  // const passwordRef = useRef(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const enterUsername = usernameRef.current.value;
-    console.log(enterUsername, "enteruser");
-    const enterPassword = passwordRef.current.value;
-    console.log("enter password", enterPassword);
-
-    if (
-      enterUsername === validUser.username &&
-      enterPassword === validUser.password
-    ) {
-      localStorage.setItem("username", enterUsername);
-      localStorage.setItem("password", enterPassword);
-      navigate("/");
+    if (login(username, password)) {
+      navigate("/")
     } else {
-      alert("Invalid username or password");
-      console.log("Invalid username and password");
+      console.log("invalid user password")
+      alert("Invalid username and passwoed");
+      setUsername("")
+      setPassword("")
     }
   };
+
   return (
-    <div className="">
-      <form className="page--login" onSubmit={handleSubmit}>
-        <label>
-          {" "}
-          Username:-{" "}
-          <input
-            placeholder="enter usernmae"
-            type="text"
-            id="username"
-            ref={usernameRef}
-          />
-        </label>
-        <label>
-          {" "}
-          Password:-{" "}
-          <input
-            placeholder="enter password"
-            type="password"
-            id="password"
-            ref={passwordRef}
-          />
-        </label>
-        <button type="submit">
-          LOGIN
-        </button>
-      </form>
+    <div className="login-container">
+          <form onSubmit={handleSubmit} className="page--login">
+      <h1>Login</h1>
+      <div className="input-group">
+        <label>UserName: -       <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      /></label>
+      </div>
+      <div className="input-group">
+        <label>Paaword:-     <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      /></label>
+      </div>
+
+  
+      <button type="submit">Login</button>
+    </form>
+
     </div>
+
   );
 };
 
