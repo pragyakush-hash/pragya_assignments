@@ -5,7 +5,6 @@ import "./productForm.css";
 const ProductForm = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState({});
-  const [editCard, setEditCard] = useState(productData)
   console.log(productData, "edit product data");
   const navigate = useNavigate()
     const handleClick = () => {

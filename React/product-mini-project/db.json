@@ -2,21 +2,21 @@
   "products": [
     {
       "id": "1",
-      "name": "Wireless Mouse",
+      "name": "Wireless Mouse dash",
       "price": 15.99,
       "description": "Smooth and responsive"
     },
     {
       "id": "2",
-      "name": "Mechanical Keyboard",
-      "price": 45.5,
+      "name": "Mechanical keybord cabel",
+      "price": "50",
       "description": "Tactile and durable"
     },
     {
-      "description": "Immersive sound",
+      "description": "",
       "id": "3",
-      "name": "pragya kushwah",
-      "price": "kushwah"
+      "name": "product 3",
+      "price": "50"
     }
   ]
 }

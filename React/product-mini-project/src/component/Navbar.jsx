@@ -7,6 +7,7 @@ import './navbar.css'
 import ProductDetail from "../pages/ProductDetail";
 import ProductForm from "./ProductForm";
 
+
 const Navbar = () => {
   return (
     <BrowserRouter>
