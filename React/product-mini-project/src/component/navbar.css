@@ -6,3 +6,12 @@
     height: 50px;
     background-color: #24d6d6;
 }
+.btn-navbar{
+        /* background-color: #24d6d6; */
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+
+}

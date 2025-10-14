@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./productForm.css";
+import { useFetch } from "../hooks/useFetch";
 
 const ProductForm = () => {
   const { id } = useParams();
-  const [productData, setProductData] = useState({});
-  console.log(productData, "edit product data");
+  // const [productData, setProductData] = useState({});
+  // console.log(productData, "edit product data");
   const navigate = useNavigate()
     const handleClick = () => {
     navigate(`/products/${id}`);
   };
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`http://localhost:3000/products/${id}`);
-      const jsonData = await response.json();
-      setProductData(jsonData);
-      console.log("data_id", jsonData);
-    };
-    fetchData();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(`http://localhost:3000/products/${id}`);
+  //     const jsonData = await response.json();
+  //     setProductData(jsonData);
+  //     console.log("data_id", jsonData);
+  //   };
+  //   fetchData();
 
-  }, []);
+  // }, []);
+  const {productData,setProductData} = useFetch({endpoint:`products/${id}`})
 
   const handleChange = (e) => {
     console.log(e, "e");
@@ -68,7 +70,7 @@ const ProductForm = () => {
           Edit Description
           <input value={productData.description} name="description" onChange={handleChange}  type="text"/>
         </label>
-        <button className="btn-class" type="submit" onClick={handleClick} >Save</button>
+        <button className="btn-save" type="submit" onClick={handleClick} >Save</button>
       </form>
     </div>
   );
