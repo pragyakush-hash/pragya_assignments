@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Login from "../pages/Login";
+import { Link } from "react-router-dom";
 import "./navbar.css";
-import ProductDetail from "../pages/ProductDetail";
-import ProductForm from "./ProductForm";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { logout , isAuthenticated } = useContext(AuthContext);
+  const { logout , state } = useContext(AuthContext);
+  console.log(state?.isAuthenticated,"isauth")
   return (
     <>
       {/* Navigation */}
@@ -17,7 +13,7 @@ const Navbar = () => {
         <Link to="/login">Login</Link>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <button onClick={()=>logout()} className="btn-navbar">{isAuthenticated ? "Logout":"Login"}</button>
+        <button onClick={()=>logout()} className="btn-navbar">{state?.isAuthenticated ? "Logout":"Login"}</button>
       </nav>
     </>
   );

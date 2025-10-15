@@ -2,9 +2,9 @@
   "products": [
     {
       "id": "1",
-      "name": "Wireless ",
-      "price": 15.99,
-      "description": "Smooth and "
+      "name": "Wireless caleddddd",
+      "price": "15.99",
+      "description": "Smooth and etc"
     },
     {
       "id": "2",
@@ -15,7 +15,7 @@
     {
       "description": "Immersive sound",
       "id": "3",
-      "name": "product 3",
+      "name": "product",
       "price": "47"
     }
   ]
