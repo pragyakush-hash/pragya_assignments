@@ -6,10 +6,11 @@ import { AuthContext } from "../context/AuthContext";
 
 const ProductForm = () => {
   const { id } = useParams();
-  // const [productData, setProductData] = useState({});
+  const [productData, setProductData] = useState({});
+  console.log("productData", productData);
   const { state, dispatch } = useContext(AuthContext);
   console.log(state?.products_id_edit, "productedit");
-  console.log(state?.product_id_update,"updateste")
+  // console.log(state?.product_id_update,"updateste")
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -29,20 +30,21 @@ const ProductForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await useFetch({ endpoint: `/products/${id}` });
-      // setProductData(data);
+      //data set in productdata fro update logic
+      setProductData(data);
       console.log(data, "editdataaaaa");
+      //data set using dispatch
       dispatch({ type: "FETCH_PRODUCTS_ID_EDIT", payload: data });
     };
     fetchData();
   }, []);
   const handleChange = (e) => {
     console.log(e, "e");
-    // setProductData({ ...productData, [e.target.name]: e.target.value });
-    dispatch({
-      type: "FETCH_PRODUCTS_ID_UPDATE",
-      payload: { name: e.target.name, value: e.target.value },
-    });
-    
+    setProductData({ ...productData, [e.target.name]: e.target.value });
+    // dispatch({
+    //   type: "FETCH_PRODUCTS_ID_UPDATE",
+    //   payload: { name: e.target.name, value: e.target.value },
+    // });
   };
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -76,23 +78,27 @@ const ProductForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(state?.product_id_update),
+      body: JSON.stringify(productData),
+      // body: JSON.stringify(state?.product_id_update),
     });
-    // setProductData(data);
-    dispatch({ type: "FETCH_PRODUCTS_ID_UPDATE", payload: data });
+    setProductData(data);
+    console.log("data,data.......");
+    // dispatch({ type: "FETCH_PRODUCTS_ID_UPDATE", payload: data });
   };
   return (
     <div className="page--productconatiner">
       <form className="page--productform" onSubmit={handleSubmit}>
         <label className="input-group">
           Id:-
-          <input value={state?.product_id_edit?.id} name="id" type="number" />
+          <input value={productData.id} name="id" type="number" />
+          {/* <input value={state?.product_id_edit?.id} name="id" type="number" /> */}
         </label>
         <label className="input-group">
           Edit Name:-{" "}
           <input
             name="name"
-            value={state?.product_id_edit?.name}
+            value={productData.name}
+            // value={state?.product_id_edit?.name}
             onChange={handleChange}
             type="text"
           />
@@ -100,7 +106,8 @@ const ProductForm = () => {
         <label className="input-group">
           Edit Price
           <input
-            value={state?.product_id_edit?.price}
+            value={productData.price}
+            // value={state?.product_id_edit?.price}
             name="price"
             onChange={handleChange}
             type="number"
@@ -110,7 +117,8 @@ const ProductForm = () => {
         <label className="input-group">
           Edit Description
           <input
-            value={state?.product_id_edit?.description}
+            value={productData.description}
+            // value={state?.product_id_edit?.description}
             name="description"
             onChange={handleChange}
             type="text"
