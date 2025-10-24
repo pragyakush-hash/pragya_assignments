@@ -1,6 +1,6 @@
 @import "tailwindcss";
 body {
-  background-image: url("./assets/bobbin-popcorn.jpg");
+  background-image: url("https://wallpapers.com/images/high/theater-background-2560-x-1594-uqagjrgh55nodvb2.webp");
   /* Optional: Add other background properties for better control */
   background-repeat: no-repeat; /* Prevents image repetition */
   background-size: cover; /* Scales image to cover the entire background */
