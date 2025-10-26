@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signup } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { signup } from "../redux/auth/authSlice";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
