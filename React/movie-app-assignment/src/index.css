@@ -1,11 +1,11 @@
 @import "tailwindcss";
 body {
+  
   background-image: url("https://wallpapers.com/images/high/theater-background-2560-x-1594-uqagjrgh55nodvb2.webp");
-  /* Optional: Add other background properties for better control */
-  background-repeat: no-repeat; /* Prevents image repetition */
-  background-size: cover; /* Scales image to cover the entire background */
-  background-position: center center; /* Centers the image */
-  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center center;
+  height: 100vh;
 }
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

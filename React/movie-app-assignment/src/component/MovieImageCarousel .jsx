@@ -2,8 +2,11 @@ import React, { useState } from "react";
 
 const MovieImageCarousel = ({ images }) => {
   const [current, setCurrent] = useState(0);
+  // console.log(images.length,"iamge length")
 
   const prevSlide = () =>setCurrent((current - 1 + images.length) % images.length);
+  //(0-1 + 2) % 2 = 1
+  //(0+1)%2 = 1
   const nextSlide = () =>setCurrent((current + 1) % images.length);
 
   if (!images || images.length === 0) return null;
@@ -13,9 +16,9 @@ const MovieImageCarousel = ({ images }) => {
       <img
         src={images[current]}
         alt={`Poster ${current + 1}`}
-        className="w-full object-cover rounded-lg shadow"
+        className=" object-cover rounded-lg shadow"
       />
-      {images.length > 1 && (
+      {images.length > 1 ? 
         <>
           <button
             onClick={prevSlide}
@@ -30,9 +33,9 @@ const MovieImageCarousel = ({ images }) => {
             {">"}
           </button>
         </>
-      )}
+      : ""}
       <div className="flex justify-center mt-2">
-        {images.map((_, idx) => (
+        {images.map((idx) => (
           <span
             key={idx}
             className={`h-2 w-2 mx-1 rounded-full ${

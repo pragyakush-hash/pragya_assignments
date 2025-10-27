@@ -11,6 +11,7 @@ const Navbar = () => {
         <Link to="/">Movies</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/movie_list">Movie-List</Link>
+        <Link to="/favorite_movie">Favorite_movie</Link>
       </nav>
     </>
   );

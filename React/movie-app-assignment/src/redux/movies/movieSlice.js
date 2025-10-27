@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchMoviesData } from "./movieApi";
+import axios from "axios";
 
 // async thunk for fetching movie data
 
@@ -9,10 +10,26 @@ export const fetchMovies = createAsyncThunk(
     try {
       const data = await fetchMoviesData();
       localStorage.setItem("movies", JSON.stringify(data.results));
+      // console.log(data, "data api response");
+
       return data.results;
     } catch (error) {
       return rejectWithValue(error.message);
     }
+  }
+);
+// async thunk for pagination api
+const API_KEY = "d04c6c749418821c9b3f8d867482808b";
+const BASE_URL = "https://api.themoviedb.org/3";
+
+export const fetchMoviesPagination = createAsyncThunk(
+  "movie/fetchMoviesPagination",
+  async ({ page = 1 }) => {
+    const response = await axios.get(
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
+    );
+    console.log(response.data, "paginationn api response");
+    return response.data;
   }
 );
 
@@ -20,11 +37,17 @@ const initialState = {
   loading: false,
   movies: [],
   error: null,
+  currentPage: 1,
+  totalPages: 1,
 };
 const movieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
@@ -33,6 +56,11 @@ const movieSlice = createSlice({
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.movies = action.payload;
         state.loading = false;
+        // state.totalPages = action.payload.total_pages;
+      })
+      .addCase(fetchMoviesPagination.fulfilled, (state, action) => {
+        // state.movies = action.payload;
+        state.totalPages = action.payload.total_pages;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.loading = false;
@@ -40,5 +68,5 @@ const movieSlice = createSlice({
       });
   },
 });
-export const {} = movieSlice.actions;
+export const { setCurrentPage } = movieSlice.actions;
 export default movieSlice.reducer;

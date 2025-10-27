@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchMovieById } from "../redux/movieDetails/movieDetailSlice";
-import MovieImageCarousel from "../component/movieImageCarousel ";
+import MovieImageCarousel from "../component/MovieImageCarousel ";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -47,7 +47,8 @@ const MovieDetails = () => {
             Back
           </button>
         </div>
-        <MovieImageCarousel images={carouselImages} />
+        {/* <MovieImageCarousel images={carouselImages} /> */}
+        <MovieImageCarousel images={carouselImages}/>
 
         <h2 className="mt-6 text-3xl font-bold text-gray-800">{movie.title}</h2>
         {movie.tagline && (

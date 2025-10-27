@@ -33,6 +33,7 @@ const MovieListPage = () => {
     let filtered = [...movies];
 
     if (genreFilter) {
+      console.log("genrefilter",genreFilter)
       filtered = filtered.filter((movie) => {
         if (movie.genre_ids) {
           return movie.genre_ids.includes(Number(genreFilter));

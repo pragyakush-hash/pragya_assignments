@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import MovieDetails from "./pages/MovieDetails";
 import MovieListPage from "./pages/MovieListPage";
+import FavoriteMoviesList from "./component/FavoriteMoviesList";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/moviedetails/:id" element={<MovieDetails />} />
             <Route path="/movie_list" element={<MovieListPage />} />
+            <Route path="favorite_movie" element={<FavoriteMoviesList />} />
           </Route>
         </Routes>
       </BrowserRouter>
