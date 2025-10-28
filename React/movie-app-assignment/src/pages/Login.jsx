@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, selectAuth } from "../redux/auth/authSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const [user, setUser] = useState("");
@@ -16,10 +17,11 @@ const Login = () => {
     if (isAuthenticated === true) {
       navigate("/");
     }
+    toast("Successfully login");
   };
   return (
     <div className="max-w-sm mx-auto  ">
-      <div className="mt-20 font-medium text-2xl text-white ">
+      <div className="mt-20 font-medium text-2xl text-red-500 ">
         <h1>LOGIN :-</h1>
       </div>
       <form
@@ -66,6 +68,7 @@ const Login = () => {
           Submit
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };

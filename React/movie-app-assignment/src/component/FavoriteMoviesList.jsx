@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeToFavoriteMovie } from "../redux/addToFav/addToFavSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 function FavoriteMoviesList() {
   const dispatch = useDispatch();
@@ -10,12 +11,13 @@ function FavoriteMoviesList() {
 
   const handleRemove = (id) => {
     dispatch(removeToFavoriteMovie(id));
+    toast("Remove favorite movie!!");
   };
 
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold mb-6 text-center text-white mt-5">
+        <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-5">
           🎬 Favorite Movie List
         </h1>{" "}
       </div>
@@ -57,6 +59,7 @@ function FavoriteMoviesList() {
                   </div>
                 </div>
               ))}
+              <ToastContainer />
             </>
           )}
         </div>

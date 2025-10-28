@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../redux/movies/movieSlice";
+import { fetchMoviesPagination } from "../redux/movies/movieSlice";
 import { useNavigate } from "react-router-dom";
 
 const MovieListPage = () => {
@@ -8,13 +8,14 @@ const MovieListPage = () => {
   const navigate = useNavigate();
 
   const { movies, loading, error } = useSelector((state) => state.movie);
+  console.log(movies,"moviesssmovie list")
 
   const [genreFilter, setGenreFilter] = useState("");
   const [ratingFilter, setRatingFilter] = useState("");
   const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMoviesPagination());
   }, [dispatch]);
 
   const genreOptions = [
@@ -30,7 +31,8 @@ const MovieListPage = () => {
   ];
 
   const filteredMovies = useMemo(() => {
-    let filtered = [...movies];
+    let filtered = [...movies.results];
+    console.log(filtered,"filteresmoviesss")
 
     if (genreFilter) {
       console.log("genrefilter",genreFilter)

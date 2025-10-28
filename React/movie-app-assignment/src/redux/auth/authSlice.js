@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
   isAuthenticated: false,
+  mode: "light",
+  visitedPages: [],
 };
 
 const authSlice = createSlice({
@@ -15,7 +17,7 @@ const authSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(newUser));
       state.user = newUser;
     },
-    login: (state, action) => { 
+    login: (state, action) => {
       const { username, password } = action.payload;
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (
@@ -30,10 +32,29 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
       }
     },
+    toggleTheme: (state) => {
+      state.mode = state.mode === "light" ? "dark" : "light";
+    },
+    addVisitedPage: (state, action) => {
+      const movieToAdd = action.payload;
+      state.visitedPages = state.visitedPages.filter(
+        (movie) => movie.id !== movieToAdd
+      );
+      
+      state.visitedPages.unshift(movieToAdd);
+
+      if (state.visitedPages.length > 5) {
+        state.visitedPages.pop();
+      }
+    },
+    clearVisitedPages: (state) => {
+      state.visitedPages = [];
+    },
   },
 });
 
-export const { signup, login } = authSlice.actions;
+export const { signup, login, toggleTheme, addVisitedPage, clearVisitedPages } =
+  authSlice.actions;
 export const selectAuth = (state) => state.auth;
 
 export default authSlice.reducer;

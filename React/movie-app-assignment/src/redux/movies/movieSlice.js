@@ -24,12 +24,24 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 export const fetchMoviesPagination = createAsyncThunk(
   "movie/fetchMoviesPagination",
-  async ({ page = 1 }) => {
+  async (page) => {
+    console.log("page", page);
     const response = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
     );
     console.log(response.data, "paginationn api response");
     return response.data;
+  }
+);
+
+export const fetchsearchMovie = createAsyncThunk(
+  "movies/searchMovie",
+  async (InputQuery) => {
+    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${InputQuery}`
+    );
+    return response.data.results;
   }
 );
 
@@ -59,8 +71,12 @@ const movieSlice = createSlice({
         // state.totalPages = action.payload.total_pages;
       })
       .addCase(fetchMoviesPagination.fulfilled, (state, action) => {
-        // state.movies = action.payload;
+        state.movies = action.payload;
         state.totalPages = action.payload.total_pages;
+      })
+      .addCase(fetchsearchMovie.fulfilled, (state) => {
+        state.movies = action.payload;
+        state.loading = false;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.loading = false;

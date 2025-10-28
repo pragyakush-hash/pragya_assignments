@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 import {
   addToFavoriteMovie,
   removeToFavoriteMovie,
@@ -26,6 +28,7 @@ const MovieCards = ({ id, title, backdrop_path, overview }) => {
       dispatch(removeToFavoriteMovie(id));
     } else {
       dispatch(addToFavoriteMovie(movieItem));
+      toast("Add To favorite list!");
     }
   };
   return (
@@ -60,6 +63,7 @@ const MovieCards = ({ id, title, backdrop_path, overview }) => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

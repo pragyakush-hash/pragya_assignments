@@ -12,12 +12,14 @@ const Movies = () => {
   const { movies, loading, error, currentPage, totalPages } = useSelector(
     (state) => state.movie
   );
-  console.log(totalPages,"totalpagesss")
+
+  console.log(movies,"movies")
   // const [apiData, setApiData] = useState([]);
 
-  useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchMovies());
+  // }, [dispatch]);
+console.log(currentPage,"current")
   useEffect(() => {
     dispatch(fetchMoviesPagination(currentPage));
   }, [dispatch, currentPage]);
@@ -31,7 +33,7 @@ const Movies = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6 text-center text-white mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-10">
         🎬 All Popular Movies {totalPages}
       </h1>
       <div>
@@ -52,7 +54,7 @@ const Movies = () => {
       </div>
 
       <div className="flex flex-row flex-wrap justify-center">
-        {movies.map((item) => (
+        {movies?.results?.map((item) => (
           <MovieCards {...item} key={item.id} />
         ))}
       </div>

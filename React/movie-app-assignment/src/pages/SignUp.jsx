@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../redux/auth/authSlice";
+
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -13,11 +15,12 @@ const SignUp = () => {
   const handleSUbmit = (e) => {
     e.preventDefault();
     dispatch(signup({ userName, password ,email}));
+    toast("succesfully signIn !!")
   };
 
   return (
     <div>
-      <div className="max-w-md mx-auto mt-20 font-medium text-2xl text-white">
+      <div className="max-w-md mx-auto mt-20 font-medium text-2xl text-red-500">
         <h1>SignUp--</h1>
       </div>
       <form
@@ -85,6 +88,7 @@ const SignUp = () => {
         >
           SignUp
         </button>
+        <ToastContainer />
       </form>
     </div>
   );

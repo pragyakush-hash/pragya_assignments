@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addVisitedPage, selectAuth } from "../redux/auth/authSlice";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
-  console.log(profileData, "profile data");
+  const { visitedPages } = useSelector(selectAuth);
+  const { movies } = useSelector((state) => state.movie);
+  const dispatch = useDispatch();
+  console.log("Visited Pages:", visitedPages);
 
   useEffect(() => {
     const storeData = JSON.parse(localStorage.getItem("user"));
-    console.log(storeData, "storedataprofile");
     setProfileData(storeData);
   }, []);
+
+  useEffect(() => {
+    if (movies) {
+      dispatch(addVisitedPage(movies));
+    }
+  }, [movies, dispatch]);
 
   return (
     <div className="mt-10 h-120">
@@ -59,6 +70,31 @@ const Profile = () => {
           >
             Edit
           </button>
+        </div>
+      </div>
+      <div className="">
+        <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-10">
+          Recently viwed sections{" "}
+        </h1>
+        {console.log(visitedPages.length, "length of recently viwed page")}
+        {/* {visitedPages?.length === 0 ? (
+          <h1>No Pages visited yet</h1>
+        ) : <div>
+          
+            {visitedPages?.map((path, idx) => {
+              <li key={idx}>
+                <Link to={path}>{path}</Link>
+              </li>;
+            })}
+            </div>
+          
+        } */}
+        {console.log(visitedPages,"")}
+        <div className="flex flex-wrap gap-10">
+          {visitedPages?.results?.map((movie) => (
+            <li>{movie.title}</li>
+
+          ))}
         </div>
       </div>
     </div>
