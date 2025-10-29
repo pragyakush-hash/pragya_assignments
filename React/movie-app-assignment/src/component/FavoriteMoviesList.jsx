@@ -16,7 +16,7 @@ function FavoriteMoviesList() {
 
   return (
     <>
-      <div>
+      <div className="flex flex-row flex-wrap justify-center"> 
         <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-5">
           🎬 Favorite Movie List
         </h1>{" "}

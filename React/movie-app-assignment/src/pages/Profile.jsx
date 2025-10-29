@@ -2,24 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addVisitedPage, selectAuth } from "../redux/auth/authSlice";
 import { Link } from "react-router-dom";
+import RecentlyViewMovieCard from "../component/RecentlyViewMovieCard";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const { visitedPages } = useSelector(selectAuth);
   const { movies } = useSelector((state) => state.movie);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   console.log("Visited Pages:", visitedPages);
+  // const data = movies.results;
+  // console.log("data", data);
 
   useEffect(() => {
     const storeData = JSON.parse(localStorage.getItem("user"));
     setProfileData(storeData);
   }, []);
 
-  useEffect(() => {
-    if (movies) {
-      dispatch(addVisitedPage(movies));
-    }
-  }, [movies, dispatch]);
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch(addVisitedPage([...data]));
+  //   }
+  // }, [movies, dispatch]);
 
   return (
     <div className="mt-10 h-120">
@@ -74,28 +77,18 @@ const Profile = () => {
       </div>
       <div className="">
         <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-10">
-          Recently viwed sections{" "}
+          Recently viwed Movies{" "}
         </h1>
         {console.log(visitedPages.length, "length of recently viwed page")}
-        {/* {visitedPages?.length === 0 ? (
-          <h1>No Pages visited yet</h1>
-        ) : <div>
-          
-            {visitedPages?.map((path, idx) => {
-              <li key={idx}>
-                <Link to={path}>{path}</Link>
-              </li>;
-            })}
-            </div>
-          
-        } */}
-        {console.log(visitedPages,"")}
-        <div className="flex flex-wrap gap-10">
-          {visitedPages?.results?.map((movie) => (
-            <li>{movie.title}</li>
-
-          ))}
-        </div>
+        {visitedPages?.length === 0 ? (
+          <h1>No Movie visited yet</h1>
+        ) : (
+          <div className="flex flex-wrap">
+            {visitedPages.map((movie) => (
+              <RecentlyViewMovieCard {...movie} key={movie.id} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

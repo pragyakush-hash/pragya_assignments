@@ -7,6 +7,7 @@ import {
   addToFavoriteMovie,
   removeToFavoriteMovie,
 } from "../redux/addToFav/addToFavSlice";
+import { addVisitedPage } from "../redux/auth/authSlice";
 
 const MovieCards = ({ id, title, backdrop_path, overview }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,13 @@ const MovieCards = ({ id, title, backdrop_path, overview }) => {
 
   const handleDetails = () => {
     navigate(`/moviedetails/${id}`);
+    const movieItemvisit = {
+      id: id,
+      title: title,
+      image: backdrop_path,
+      overview: overview,
+    };
+    dispatch(addVisitedPage(movieItemvisit));
   };
   const handleAddToFav = () => {
     const movieItem = {
