@@ -16,7 +16,7 @@ function FavoriteMoviesList() {
 
   return (
     <>
-      <div className="flex flex-row flex-wrap justify-center"> 
+      <div className="flex flex-row flex-wrap justify-center">
         <h1 className="text-3xl font-bold mb-6 text-center text-red-500 mt-5">
           🎬 Favorite Movie List
         </h1>{" "}
@@ -25,14 +25,14 @@ function FavoriteMoviesList() {
         {console.log(movieList.length, "length")}
         <div>
           {movieList.length === 0 ? (
-            <p className="text-3xl font-bold mb-6 text-center text-white mt-5">
-              {" "}
+            <h1 className="text-3xl font-bold mb-6 text-center text-black-500 mt-5">
               No favorite movies yet.
-            </p>
+            </h1>
           ) : (
             <>
               {movieList.map((movie) => (
                 <div
+                  key={movie.id}
                   className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-md dark:bg-gray-800 dark:border-gray-700 m-5"
                   // onClick={handleDetails}
                 >

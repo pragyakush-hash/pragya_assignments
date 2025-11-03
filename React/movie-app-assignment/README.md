@@ -94,6 +94,7 @@ src
 │ ├── MovieCards.jsx # Individual movie card component
 │ ├── MovieImageCarousel.jsx # Carousel for movie posters
 │ └── Navbar.jsx # Navigation bar
+| └── RecentlyViewMovieCard.jsx # RecentlyViewMovieCard  
 ├── pages
 │ ├── Login.jsx # Login page
 │ ├── MovieDetails.jsx # Movie details page

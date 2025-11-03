@@ -81,7 +81,7 @@ const Profile = () => {
         </h1>
         {console.log(visitedPages.length, "length of recently viwed page")}
         {visitedPages?.length === 0 ? (
-          <h1>No Movie visited yet</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center  mt-10">No Movie visited yet</h1>
         ) : (
           <div className="flex flex-wrap">
             {visitedPages.map((movie) => (
