@@ -1,6 +1,8 @@
 import { Router } from "express";
 import userController from "../controller/userController.js";
 import verifyToken from "../middleware/authMiddleware.js";
+import handleValidationErrors from "../middleware/validator/validateRequest.js";
+import { loginValidation, registerValidation } from "../middleware/validator/userValidator.js";
 const router = Router();
 
 //protecetd route
@@ -14,8 +16,8 @@ router.get("/", userController.getUser);
 router.get("/:id", userController.getUserById);
 router.delete("/:id", userController.deleteUser);
 router.put("/:id", userController.updateUser);
-router.post("/register", userController.register);
-router.post("/login", userController.login);
+router.post("/register",registerValidation,handleValidationErrors, userController.register);
+router.post("/login",loginValidation,handleValidationErrors, userController.login);
 
 /**
  * Complete CRUD operation for user
