@@ -1,4 +1,6 @@
 import User from "../models/userModel.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 // create all the remaining controllers
 
@@ -58,4 +60,47 @@ const updateUser = async (req, res) => {
   }
 };
 
-export default { createUser, getUser, getUserById, deleteUser, updateUser };
+const register = async (req, res) => {
+  try {
+    const { name, password, email, age } = req.body;
+    console.log(req.body, "request");
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ name, email, age, password: hashedPassword });
+    await user.save();
+    console.log("user", user);
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Registration failed" });
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const { name, password } = req.body;
+    const user = await User.findOne({ name });
+    if (!user) {
+      return res.status(401).json({ message: "Authentication failed" });
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    console.log(passwordMatch, "passwordMatch");
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Authentication failed" });
+    }
+    const token = jwt.sign({ userId: user._id }, "p123", {
+      expiresIn: "2h",
+    });    console.log(token, "tokennnnn");
+    res.status(200).json({ token });
+  } catch (error) {
+    res.status(500).json({ error: "Login failed" });
+  }
+};
+
+export default {
+  createUser,
+  getUser,
+  getUserById,
+  deleteUser,
+  updateUser,
+  register,
+  login,
+};
