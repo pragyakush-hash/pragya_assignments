@@ -1,8 +1,17 @@
 import Product from "../models/productModel.js";
 
 const createProduct = async (req, res) => {
+  console.log("come inside createproduct");
   try {
-    const newProduct = await Product.create(req.body);
+    const sellerId = req.userId;
+    const role = req.userRole;
+    console.log("role", role);
+    if (role !== "seller" && role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Only sellers or admins can create products" });
+    }
+    const newProduct = await Product.create({ ...req.body, seller: sellerId });
     res.status(200).json(newProduct);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -31,10 +40,22 @@ const getProductById = async (req, res) => {
 };
 
 const getProductAndDelete = async (req, res) => {
+  console.log("come inside delete");
+
   try {
+    const role = req.userRole;
+    console.log("roledelete", role);
+    if (role !== "seller" && role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Only sellers or admins can delete products" });
+    }
     const productDelete = await Product.findByIdAndDelete(req.params.id);
     if (!productDelete) {
       return res.status(404).json({ message: "product not found" });
+    }
+    if (role === "seller") {
+      return res.status(403).json({ message: "You can delete only your own products" });
     }
     res.status(200).json({ message: "Product is deleted sucessfully!" });
   } catch (error) {

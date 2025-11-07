@@ -62,10 +62,10 @@ const updateUser = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { name, password, email, age } = req.body;
+    const { name, password, email, role } = req.body;
     console.log(req.body, "request");
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, age, password: hashedPassword });
+    const user = new User({ name, email, role, password: hashedPassword });
     await user.save();
     console.log("user", user);
     res.status(201).json({ message: "User registered successfully" });
@@ -76,8 +76,8 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const { name, password } = req.body;
-    const user = await User.findOne({ name });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "Authentication failed" });
     }
@@ -86,9 +86,13 @@ const login = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: "Authentication failed" });
     }
-    const token = jwt.sign({ userId: user._id }, "p123", {
-      expiresIn: "2h",
-    });    console.log(token, "tokennnnn");
+
+    const token = jwt.sign({ userId: user._id, role: user.role }, "p123", {
+      expiresIn: "1d",
+    });
+    console.log(user._id)
+    console.log(user.role)
+    console.log(token, "tokennnnn");
     res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ error: "Login failed" });

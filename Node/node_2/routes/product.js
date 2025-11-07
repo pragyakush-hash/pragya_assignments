@@ -1,14 +1,16 @@
 import { Router } from "express";
 import productsController from "../controller/productsController.js";
+import verifyToken from "../middleware/authMiddleware.js";
+import checkRole from "../middleware/roleMiddleware.js";
 
 const route = Router();
 
-route.post("/", productsController.createProduct);
+route.post("/",verifyToken,checkRole("seller"), productsController.createProduct);
 route.get("/", productsController.getAllProducts);
 route.get("/:id", productsController.getProductById);
-route.delete("/:id", productsController.getProductAndDelete);
-route.put("/:id", productsController.getProductAndUpdate);
-route.patch("/:id", productsController.getProductAndUpdateField);
+route.delete("/:id",verifyToken,checkRole("seller","admin"), productsController.getProductAndDelete);
+route.put("/:id",verifyToken,checkRole("seller"), productsController.getProductAndUpdate);
+route.patch("/:id",verifyToken,checkRole("seller"), productsController.getProductAndUpdateField);
 route.get("/api/products", productsController.getProductByPagination);
 
 export default route;

@@ -3,6 +3,7 @@ import express from "express";
 import userRoutes from "./routes/user.js";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/product.js";
+import  orderRoutes  from "./routes/order.js";
 
 dotenv.config();
 connectDB();
@@ -11,7 +12,8 @@ app.use(express.json());
 const PORT = process.env.PORT || 8080;
 
 app.use("/user", userRoutes);
-app.use("/product", productRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/order", orderRoutes);
 
 // create a db connection here
 // and impliment the connect DB funnction

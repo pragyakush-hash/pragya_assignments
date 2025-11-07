@@ -19,13 +19,15 @@ const userSchema = new mongoose.Schema({
       "Please fill a valid email address",
     ],
   },
-  age: {
-    type: Number,
-  },
   password: {
     type: String,
     require: [true, "Password is required"],
     minlength: [6, "Password is required"],
+  },
+  role: {
+    type: String,
+    enum: ["user", "seller", "admin"],
+    default: "user",
   },
 });
 
