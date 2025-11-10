@@ -1,4 +1,5 @@
 import Order from "../models/orderModel.js";
+import Product from "../models/productModel.js";
 
 const createOrder = async (req, res) => {
   try {
@@ -23,8 +24,39 @@ const createOrder = async (req, res) => {
 };
 
 const getAllOrders = async (req, res) => {
-  const orders = await Order.find().populate("user", "name email");
-  res.json(orders);
+  try {
+    const role = req.userRole;
+    const userId = req.userId;
+    console.log("getallorder", role);
+    console.log("getallorder", userId);
+    let orders;
+    if (role === "admin") {
+      const orders = await Order.find().populate("user", "name email");
+    } else if (role === "seller") {
+      const sellerProducts = await Product.find({ seller: userId }).select(
+        "_id"
+      );
+      const productIds = sellerProducts.map((p) => p._id);
+      orders = await Order.find({
+        "products.product": { $in: productIds },
+      }).populate("user", "name email");
+    } else {
+      return res.status(403).json({
+        message: "Access denied. Only sellers or admin can view orders.",
+      });
+    }
+
+    res
+      .status(200)
+      .json({
+        message: "Orders fetched successfully",
+        totalOrders: orders.length,
+        orders,
+      });
+  } catch (error) {
+    console.error("errors fetching", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
 };
 
 export default { createOrder, getAllOrders };

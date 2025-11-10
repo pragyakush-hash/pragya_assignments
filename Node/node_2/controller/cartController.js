@@ -1,0 +1,55 @@
+import Cart from "../models/cartModel.js";
+
+const addToCart = async (req, res) => {
+  try {
+    const { productId, quantity } = req.body;
+    const userId = req.userId;
+    let cart = await Cart.findOne({ user: userId });
+    if (cart) {
+      const item = cart.items.find((i) => i.product.toString() === productId);
+      console.log("item", item);
+      if (item) {
+        item.quantity += quantity;
+      } else {
+        cart.items.push({ product: productId, quantity });
+      }
+      await cart.save();
+      return res.status(200).json({ messgage: "Cart updated", cart });
+    }
+    const newCart = await Cart.create({
+      user: userId,
+      items: [{ product: productId, quantity }],
+    });
+    return res
+      .status(201)
+      .json({ message: "Cart created and item added", cart: newCart });
+  } catch (error) {
+    console.error("error adding to cart", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+const viewCart = async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    const cart = await Cart.findOne({ user: userId }).populate(
+      "items.product",
+      "name price brand category image"
+    );
+
+    if (!cart) {
+      return res.status(404).json({ message: "Cart is empty" });
+    }
+
+    res.status(200).json({
+      message: "Cart fetched successfully",
+      cart,
+    });
+    console.log("cart", cart);
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+export default { addToCart, viewCart };

@@ -6,3 +6,6 @@ export { productRoutes };
 
 import orderRoutes from "./order.js";
 export { orderRoutes };
+
+import cartRoutes from "./cart.js";
+export { cartRoutes };
