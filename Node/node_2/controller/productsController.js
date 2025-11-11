@@ -1,19 +1,37 @@
+import cloudinary from "../config/cloudinary.js";
 import Product from "../models/productModel.js";
 
 const createProduct = async (req, res) => {
-  console.log("come inside createproduct");
   try {
     const sellerId = req.userId;
     const role = req.userRole;
-    console.log("role", role);
+
     if (role !== "seller" && role !== "admin") {
       return res
         .status(403)
         .json({ message: "Only sellers or admins can create products" });
     }
-    const newProduct = await Product.create({ ...req.body, seller: sellerId });
-    res.status(200).json(newProduct);
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    // Upload image to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "product_images",
+    });
+
+    const newProduct = await Product.create({
+      ...req.body,
+      image: result.secure_url, // store this Cloudinary image URL
+      seller: sellerId,
+    });
+
+    res
+      .status(201)
+      .json({ message: "Product created successfully", newProduct });
   } catch (error) {
+    console.error("Error creating product:", error);
     res.status(400).json({ message: error.message });
   }
 };
@@ -55,7 +73,9 @@ const getProductAndDelete = async (req, res) => {
       return res.status(404).json({ message: "product not found" });
     }
     if (role === "seller") {
-      return res.status(403).json({ message: "You can delete only your own products" });
+      return res
+        .status(403)
+        .json({ message: "You can delete only your own products" });
     }
     res.status(200).json({ message: "Product is deleted sucessfully!" });
   } catch (error) {

@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Otp from "../models/otpModel.js";
 
 // create all the remaining controllers
 
@@ -62,8 +63,30 @@ const updateUser = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { name, password, email, role } = req.body;
+    const { name, password, email, role, otp } = req.body;
     console.log(req.body, "request");
+    if (!name || !email || !password || !otp) {
+      return res.status(403).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "User already exists",
+      });
+    }
+
+    const response = await Otp.find({ email }).sort({ createdAt: -1 }).limit(1);
+    if (response.length === 0 || otp !== response[0].otp) {
+      return res.status(400).json({
+        success: false,
+        message: "The OTP is not valid",
+      });
+    }
+    // Secure password
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email, role, password: hashedPassword });
     await user.save();
@@ -90,8 +113,8 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user._id, role: user.role }, "p123", {
       expiresIn: "1d",
     });
-    console.log(user._id)
-    console.log(user.role)
+    console.log(user._id);
+    console.log(user.role);
     console.log(token, "tokennnnn");
     res.status(200).json({ token });
   } catch (error) {

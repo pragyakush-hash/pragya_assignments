@@ -9,3 +9,6 @@ export { orderRoutes };
 
 import cartRoutes from "./cart.js";
 export { cartRoutes };
+
+import otpRoutes from "./otp.js";
+export { otpRoutes };
