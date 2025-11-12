@@ -12,3 +12,6 @@ export { cartRoutes };
 
 import otpRoutes from "./otp.js";
 export { otpRoutes };
+
+import analiticsRoutes from "./analitics.js";
+export { analiticsRoutes };
