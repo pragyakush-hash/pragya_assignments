@@ -8,9 +8,9 @@ const router = Router();
 
 //protecetd route
 
-router.get("/", verifyToken, (req, res) => {
-  res.status(200).json({ message: "Protected route accessed" });
-});
+// router.get("/", verifyToken, (req, res) => {
+//   res.status(200).json({ message: "Protected route accessed" });
+// });
 
 router.post("/",verifyToken,checkRole("seller","admin"), userController.createUser);
 router.get("/", userController.getUser);

@@ -3,7 +3,7 @@ import sellerAnalyticsController from "../controller/sellerAnalyticsController.j
 
 const router = express.Router();
 
-// Seller Routes
+
 router.get("/total-products/:sellerId",sellerAnalyticsController.getSellerTotalProducts);
 router.get("/total-orders/:sellerId",sellerAnalyticsController.getSellerTotalOrders);
 router.get("/total-revenue/:sellerId", sellerAnalyticsController.getSellerRevenue);

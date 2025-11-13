@@ -1,12 +1,12 @@
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors"
 import userRoutes from "./routes/user.js";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/product.js";
 import orderRoutes from "./routes/order.js";
 import cartRoutes from "./routes/cart.js";
 import otpRoutes from "./routes/otp.js";
-import analiticsRoutes from "./routes/analitics.js";
 import adminAnalytics from "./routes/adminAnalytics.js";
 import sellerAnalytics from "./routes/sellerAnalytics.js";
 import userAnalytics from "./routes/userAnalytics.js";
@@ -16,6 +16,12 @@ connectDB();
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 8080;
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.use("/user", userRoutes);
 app.use("/api/product", productRoutes);
