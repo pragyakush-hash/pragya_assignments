@@ -15,3 +15,12 @@ export { otpRoutes };
 
 import analiticsRoutes from "./analitics.js";
 export { analiticsRoutes };
+
+import adminAnalytics from "./adminAnalytics.js3";
+export { adminAnalytics };
+
+import sellerAnalytics from "./sellerAnalytics.js";
+export { sellerAnalytics };
+
+import userAnalytics from "./userAnalytics.js";
+export { userAnalytics };

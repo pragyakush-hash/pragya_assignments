@@ -7,6 +7,9 @@ import orderRoutes from "./routes/order.js";
 import cartRoutes from "./routes/cart.js";
 import otpRoutes from "./routes/otp.js";
 import analiticsRoutes from "./routes/analitics.js";
+import adminAnalytics from "./routes/adminAnalytics.js";
+import sellerAnalytics from "./routes/sellerAnalytics.js";
+import userAnalytics from "./routes/userAnalytics.js";
 
 dotenv.config();
 connectDB();
@@ -20,6 +23,9 @@ app.use("/api/order", orderRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/sendotp", otpRoutes);
 app.use("/admin-analytics", analiticsRoutes);
+app.use("/api/analytics/admin", adminAnalytics);
+app.use("/api/analytics/seller", sellerAnalytics);
+app.use("/api/analytics/user", userAnalytics);
 
 // create a db connection here
 // and impliment the connect DB funnction

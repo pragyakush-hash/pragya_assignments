@@ -19,7 +19,6 @@
 // let laptop3 = new Laptop("HP")
 // console.log(laptop3)
 
-
 // class LaptopClass {
 //   constructor(brand){
 //     this.brand = brand;
@@ -28,7 +27,6 @@
 
 // let laptop4 = new LaptopClass("HP")
 // console.log(laptop4)
-
 
 // const laptopProto = {
 //     brand : "HP"
@@ -69,7 +67,6 @@
 // const greetFn = person.greet;
 // greetFn();
 
-
 // const person = {
 //   name: "Amit",
 //   greet: function() {
@@ -78,8 +75,7 @@
 // };
 
 // const greetFn = person.greet.bind(person);
-// greetFn(); 
-
+// greetFn();
 
 // class CarClass{
 //     constructor(modal,color){
@@ -100,7 +96,6 @@
 // setTimeout(msg,2000)
 // msg()
 
-
 // const delay = (ms)=>{
 //     return new Promise(reslove=>setTimeout(reslove,ms))
 // }
@@ -111,7 +106,7 @@
 // const deplayFunction = async()=> {
 //     await delay(2000)
 //     console.log("done")
-    
+
 // }
 // deplayFunction()
 
@@ -119,3 +114,33 @@
 // const custom = { lang: "fr" };
 // const final = { ...defaults, ...custom }; // spread operator
 // console.log(final)
+
+// {
+//   var x = 1;
+//   let y = 2;
+//   const z = 3;
+// }
+
+// console.log(x);
+// console.log(y);
+// console.log(z);
+
+// {
+//   var x = 1;
+//   let y = 2;
+//   console.log(y);
+
+//   const z = 3;
+//   console.log(z);
+// }
+
+// console.log(x);
+
+
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+// var a = 1;
+// let b = 2;
+// const c = 3;
