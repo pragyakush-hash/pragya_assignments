@@ -22,7 +22,6 @@ app.use("/api/product", productRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/sendotp", otpRoutes);
-app.use("/admin-analytics", analiticsRoutes);
 app.use("/api/analytics/admin", adminAnalytics);
 app.use("/api/analytics/seller", sellerAnalytics);
 app.use("/api/analytics/user", userAnalytics);
