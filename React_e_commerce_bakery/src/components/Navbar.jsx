@@ -19,13 +19,10 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="http://cookiesbakery.nop-station.com/images/thumbs/0000107_logo.png"
             alt="Logo"
-            className="h-8"
+            className="w-[165px] h-[62px] object-contain"
           />
-          <span className="text-xl font-semibold text-gray-800">
-            Bakery Bliss
-          </span>
         </Link>
 
         {/* Search bar (visible in md and up) */}

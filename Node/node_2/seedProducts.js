@@ -16,12 +16,12 @@ const sellers = [
 const products = [];
 
 sellers.forEach((sellerId, i) => {
-  for (let j = 1; j <= 10; j++) {
+  for (let j = 1; j <= 1; j++) {
     products.push({
       name: `Seller${i + 1}-Product${j}`,
       description: "Delicious handmade bakery product",
       price: Math.floor(Math.random() * 500) + 100,
-      category: "Cake",
+      category: "Cup cakes",
       brand: "Sweet Treats Bakery",
       stock: Math.floor(Math.random() * 50) + 10,
       rating: Math.floor(Math.random() * 5) + 1,

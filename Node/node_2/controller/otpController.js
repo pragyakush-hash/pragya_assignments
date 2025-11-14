@@ -3,10 +3,13 @@ import User from "../models/userModel.js";
 import otpGenerator from "otp-generator";
 
 const sendOtp = async (req, res) => {
-    console.log("hello from send otp")
+  console.log("hello from send otp");
   try {
-    const { email } = req.body;
+    const  {email}  = req.body;
+    console.log(email,"email")
     const checkUserPresent = await User.findOne({ email });
+    console.log(checkUserPresent,"checkuserpresent")
+
     if (checkUserPresent) {
       return res.status(401).json({ message: "User is already registerted" });
     }
