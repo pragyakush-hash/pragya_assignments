@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { emailVerification } from "./authSlice";
 
 const EmailVerification = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, error } = useSelector((state) => state.auth);
   const [emailInput, setEmailInput] = useState("");
 
@@ -16,7 +18,13 @@ const EmailVerification = () => {
     if (error) {
       console.log(`Signup failed: ${error.message || "Unknown error"}`);
     }
-  }, [error]);
+    if (isLoading) {
+      setTimeout(() => {
+        navigate("/register");
+      }, 3000);
+    }
+  }, [error, isLoading]);
+
   return (
     <>
       <div className="mt-30 text-2xl text-amber-700 text-center font-bold ">
@@ -42,10 +50,13 @@ const EmailVerification = () => {
             className="bg-amber-700 hover:bg-amber-800 text-white py-2 px-4 rounded text-center"
           >
             {/* sent otp */}
-            {isLoading ? "sending otp" : "opt send"}
+            {console.log(isLoading, "isloading")}
+            {isLoading ? "sending otp..." : "opt send"}
           </button>
           {error ? (
-            <p style={{ color: "red" }}>{error.message || "Error occurred"}</p>
+            <p style={{ color: "red" }}>
+              {error.message || "Please enter valid email address"}
+            </p>
           ) : (
             ""
           )}

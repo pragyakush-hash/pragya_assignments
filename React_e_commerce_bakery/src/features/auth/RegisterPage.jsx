@@ -69,6 +69,48 @@ const RegisterPage = () => {
             />
           </div>
 
+          <div className="flex items-start flex-col justify-start">
+            <label
+              htmlFor="otp"
+              className="text-sm text-gray-700 dark:text-gray-200 mr-2"
+            >
+              OTP:
+            </label>
+
+            <div className="flex gap-3 mt-2">
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <input
+                type="text"
+                maxLength="1"
+                className="w-12 h-12 text-center text-xl font-medium rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
           <button
             type="submit"
             className="bg-amber-700 hover:bg-amber-800 text-white py-2 px-4 rounded text-center"
