@@ -8,6 +8,7 @@ import NewProductsPage from "./pages/NewProductsPage";
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
 import EmailVerification from "./features/auth/EmailVerification";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/email_verification" element={<EmailVerification />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
