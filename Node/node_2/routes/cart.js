@@ -6,4 +6,5 @@ const route = Router();
 
 route.post("/add", verifyToken, cartController.addToCart);
 route.get("/", verifyToken, cartController.viewCart);
+route.delete("/:id", verifyToken, cartController.deleteCartItem);
 export default route;

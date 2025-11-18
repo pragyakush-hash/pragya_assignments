@@ -52,4 +52,15 @@ const viewCart = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
-export default { addToCart, viewCart };
+
+const deleteCartItem = async (req, res) => {
+  try {
+    const userDelete = await Cart.findByIdAndDelete(req.params.id);
+    if (!userDelete)
+      return res.status(404).json({ message: "item not found for deletion" });
+    res.json({ message: "cart item remove successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+export default { addToCart, viewCart, deleteCartItem };

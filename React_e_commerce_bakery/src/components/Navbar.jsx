@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <>
@@ -46,7 +47,7 @@ const Navbar = () => {
             >
               <FaHeart className="text-xl" />
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
-                3
+                
               </span>
             </Link>
 
@@ -57,7 +58,7 @@ const Navbar = () => {
             >
               <FaShoppingCart className="text-xl" />
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
-                2
+               {cartItems.length}
               </span>
             </Link>
 
@@ -164,7 +165,7 @@ const Navbar = () => {
                   to="/login"
                   className="block py-2 px-3 text-gray-700 hover:text-pink-600"
                 >
-                  {isAuthenticated  ? "logout" : "login"}
+                  {isAuthenticated ? "logout" : "login"}
                 </Link>
               </li>
               <li>

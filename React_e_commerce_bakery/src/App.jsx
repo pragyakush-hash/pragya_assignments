@@ -9,6 +9,8 @@ import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
 import EmailVerification from "./features/auth/EmailVerification";
 import Footer from "./components/Footer";
+import Favorites from "./pages/Favorites";
+import CartPage from "./features/cart/CartPage";
 
 const App = () => {
   return (
@@ -23,8 +25,10 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/email_verification" element={<EmailVerification />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
