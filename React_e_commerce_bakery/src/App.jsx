@@ -12,6 +12,8 @@ import Footer from "./components/Footer";
 import Favorites from "./pages/Favorites";
 import CartPage from "./features/cart/CartPage";
 import ProductDetail from "./features/products/ProductDetail";
+import OrderSuccess from "./features/orders/orderSuccess";
+import OrderHistory from "./features/orders/OrderHistory";
 
 const App = () => {
   return (
@@ -29,6 +31,8 @@ const App = () => {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/order-history" element={<OrderHistory />} />
         </Routes>
         <Footer />
       </BrowserRouter>

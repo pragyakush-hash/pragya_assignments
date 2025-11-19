@@ -46,17 +46,33 @@ const getAllOrders = async (req, res) => {
       });
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Orders fetched successfully",
-        totalOrders: orders.length,
-        orders,
-      });
+    res.status(200).json({
+      message: "Orders fetched successfully",
+      totalOrders: orders.length,
+      orders,
+    });
   } catch (error) {
     console.error("errors fetching", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-export default { createOrder, getAllOrders };
+const getAllOrdersByUser = async (req, res) => {
+  try {
+    const orders = await Order.find({ user: req.userId }).populate(
+      "products.product"
+    );
+
+    return res.status(200).json({
+      message: "Orders fetched successfully",
+      orders,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+export default { createOrder, getAllOrders, getAllOrdersByUser };

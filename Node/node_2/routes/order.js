@@ -6,6 +6,7 @@ import orderController from "../controller/orderController.js";
 const route = Router();
 
 route.post("/", verifyToken, checkRole("user"), orderController.createOrder);
+route.get("/getAllByUser", verifyToken, orderController.getAllOrdersByUser);
 route.get("/", verifyToken, checkRole("admin","seller"), orderController.getAllOrders);
 
 export default route;
