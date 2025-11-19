@@ -6,7 +6,8 @@ const addToCart = async (req, res) => {
     const userId = req.userId;
     let cart = await Cart.findOne({ user: userId });
     if (cart) {
-      const item = cart.items.find((i) => i.product.toString() === productId);
+      console.log(cart,"cart coming")
+      const item = cart.items.find((i) => i.product === productId);
       console.log("item", item);
       if (item) {
         item.quantity += quantity;
@@ -53,14 +54,31 @@ const viewCart = async (req, res) => {
   }
 };
 
+
+
 const deleteCartItem = async (req, res) => {
   try {
-    const userDelete = await Cart.findByIdAndDelete(req.params.id);
-    if (!userDelete)
-      return res.status(404).json({ message: "item not found for deletion" });
-    res.json({ message: "cart item remove successfully" });
+    const userId = req.userId;    
+    const cartItemId = req.params.id;
+
+    const cart = await Cart.findOne({ user: userId });
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
+
+    cart.items = cart.items.filter(
+      (item) => item._id.toString() !== cartItemId
+    );
+
+    await cart.save();
+
+    res.json({
+      message: "Item deleted successfully",
+      cart: cart.items, // return items only
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
 export default { addToCart, viewCart, deleteCartItem };

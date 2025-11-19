@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addToCartFetch, viewCartItemsFetch } from "./cartAPI";
+import {
+  addToCartFetch,
+  viewCartItemsFetch,
+  deleteCartItemFetch,
+} from "./cartAPI";
 
 export const addToCart = createAsyncThunk(
   "user/addToCart",
@@ -22,6 +26,19 @@ export const viewAllCartItems = createAsyncThunk(
       return response;
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteItemFromCart = createAsyncThunk(
+  "user/deleteItemFromCart",
+  async (cartItemId, { rejectWithValue }) => {
+    try {
+      await deleteCartItemFetch(cartItemId);
+      const refreshedCart = await viewCartItemsFetch();
+      return refreshedCart;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -58,9 +75,21 @@ const cartSlice = createSlice({
       })
       .addCase(viewAllCartItems.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cartItems = action.payload; 
+        state.cartItems = action.payload;
       })
       .addCase(viewAllCartItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //delete item from cart
+      .addCase(deleteItemFromCart.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteItemFromCart.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.cartItems = action.payload;
+      })
+      .addCase(deleteItemFromCart.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

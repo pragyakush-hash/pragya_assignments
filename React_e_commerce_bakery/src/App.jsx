@@ -11,6 +11,7 @@ import EmailVerification from "./features/auth/EmailVerification";
 import Footer from "./components/Footer";
 import Favorites from "./pages/Favorites";
 import CartPage from "./features/cart/CartPage";
+import ProductDetail from "./features/products/ProductDetail";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/email_verification" element={<EmailVerification />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>

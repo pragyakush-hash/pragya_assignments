@@ -19,9 +19,7 @@ const EmailVerification = () => {
       console.log(`Signup failed: ${error.message || "Unknown error"}`);
     }
     if (isLoading) {
-      setTimeout(() => {
         navigate("/register");
-      }, 3000);
     }
   }, [error, isLoading]);
 

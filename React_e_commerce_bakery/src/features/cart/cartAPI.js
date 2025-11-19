@@ -34,9 +34,20 @@ export const viewCartItemsFetch = async () => {
       },
     });
 
-    return response.data.cart.items; 
+    return response.data.cart.items;
   } catch (error) {
     throw error.response;
   }
 };
+
+export const deleteCartItemFetch = async (cartItemId) => {
+  const token = localStorage.getItem("userToken");
+
+  const response = await axios.delete(`${API_URL}/api/cart/${cartItemId}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+
+  return response.data.cart;   
+};
+
 
