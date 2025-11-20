@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductDataFetch, ProductDataFetchById } from "./productAPI";
+import {
+  ProductDataFetch,
+  ProductDataFetchById,
+  SearchProductFetch,
+} from "./productAPI";
 
 export const getProducts = createAsyncThunk(
   "product/getProducts",
@@ -23,6 +27,19 @@ export const getProductById = createAsyncThunk(
   }
 );
 
+export const searchProduct = createAsyncThunk(
+  "product/search",
+  async (query, { rejectWithValue }) => {
+    try {
+      console.log("come here inside search");
+
+      return await SearchProductFetch(query);
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || "Search failed");
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState: {
@@ -30,6 +47,7 @@ const productSlice = createSlice({
     product: null,
     isLoading: false,
     error: null,
+    search: false,
   },
   reducers: {},
 
@@ -41,7 +59,7 @@ const productSlice = createSlice({
       })
       .addCase(getProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.products = action.payload; 
+        state.products = action.payload;
       })
       .addCase(getProducts.rejected, (state, action) => {
         state.isLoading = false;
@@ -57,6 +75,20 @@ const productSlice = createSlice({
         state.product = action.payload;
       })
       .addCase(getProductById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      //Search product
+      .addCase(searchProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(searchProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.search = true;
+        state.products = action.payload;
+      })
+      .addCase(searchProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

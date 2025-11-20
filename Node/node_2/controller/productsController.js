@@ -139,6 +139,26 @@ const getProductByPagination = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+const searchProduct = async (req, res) => {
+  try {
+    const { query } = req.query;
+    console.log("query",query)
+    if (!query) {
+    console.log("query inside condition",query)
+
+      return res.status(400).json({ message: "Search query is required" });
+    }
+    // Use MongoDB's text search feature
+    const product = await Product.find(
+      { $text: { $search: query } },
+      { score: { $meta: "textScore" } } // Optional: to get relevance score
+    ).sort({ score: { $meta: "textScore" } });
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error searching products:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 export default {
   createProduct,
   getAllProducts,
@@ -147,4 +167,5 @@ export default {
   getProductAndUpdate,
   getProductAndUpdateField,
   getProductByPagination,
+  searchProduct,
 };

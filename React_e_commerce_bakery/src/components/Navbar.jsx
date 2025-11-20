@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaUserCircle,
@@ -7,13 +7,27 @@ import {
   FaBars,
   FaSearch,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { searchProduct } from "../features/products/productSlice";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  console.log("searchInputProduct", searchInput);
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log(searchInput, "inside handle search");
+    if (searchInput.trim()) {
+      dispatch(searchProduct(searchInput));
+      setSearchInput("")
+    }
+  };
 
   return (
     <>
@@ -29,14 +43,20 @@ const Navbar = () => {
           </Link>
 
           {/* Search bar (visible in md and up) */}
-          <div className="hidden md:flex items-center relative w-1/3">
-            <FaSearch className="absolute left-3 text-gray-500" />
+          <form
+            className="hidden md:flex items-center relative w-1/3"
+            onSubmit={handleSearch}
+          >
+            <FaSearch className="absolute left-3 text-gray-500" type="submit" />
             <input
               type="text"
               placeholder="Search for cakes, pastries..."
+              value={searchInput}
+              onChange={(event) => setSearchInput(event.target.value)}
               className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
-          </div>
+            <button></button>
+          </form>
 
           {/* Right Section (Cart, Fav, Profile) */}
           <div className="flex items-center space-x-5 md:order-2">
@@ -46,9 +66,7 @@ const Navbar = () => {
               className="relative text-gray-700 hover:text-pink-600"
             >
               <FaHeart className="text-xl" />
-              <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
-                
-              </span>
+              <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full"></span>
             </Link>
 
             {/* Cart */}
@@ -58,7 +76,7 @@ const Navbar = () => {
             >
               <FaShoppingCart className="text-xl" />
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
-               {cartItems.length}
+                {cartItems.length}
               </span>
             </Link>
 

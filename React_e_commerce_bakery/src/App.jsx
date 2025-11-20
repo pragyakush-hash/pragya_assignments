@@ -12,8 +12,11 @@ import Footer from "./components/Footer";
 import Favorites from "./pages/Favorites";
 import CartPage from "./features/cart/CartPage";
 import ProductDetail from "./features/products/ProductDetail";
-import OrderSuccess from "./features/orders/orderSuccess";
+import OrderSuccess from "./features/orders/OrderSuccess";
 import OrderHistory from "./features/orders/OrderHistory";
+// import SellerDashboard from "./features/seller/SellerDashboard";
+import AdminDashboard from "./features/admin/AdminDashboard";
+import SellerDashboard from "./features/seller/SellerDashboard";
 
 const App = () => {
   return (
@@ -33,6 +36,12 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/order-success" element={<OrderSuccess />} />
           <Route path="/order-history" element={<OrderHistory />} />
+
+          {/* seller routes  */}
+          <Route path="/seller" element={<SellerDashboard />} />
+
+          {/* admin routes */}
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
         <Footer />
       </BrowserRouter>

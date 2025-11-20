@@ -45,9 +45,9 @@ const OrderHistory = () => {
                 </p>
                 <p className="text-sm text-gray-500">
                   Placed On:{" "}
-                  <span className="text-gray-800">
+                  {/* <span className="text-gray-800">
                     {new Date(order.createdAt).toLocaleDateString()}
-                  </span>
+                  </span> */}
                 </p>
               </div>
 
@@ -69,7 +69,7 @@ const OrderHistory = () => {
 
             {/* PRODUCT LIST */}
             <div className="divide-y">
-              {order.items.map((item) => (
+              {/* {order.items.map((item) => (
                 <div
                   key={item._id}
                   className="flex items-center py-4 gap-4 hover:bg-gray-50 rounded-lg px-2"
@@ -97,7 +97,7 @@ const OrderHistory = () => {
                     View Product
                   </Link>
                 </div>
-              ))}
+              ))} */}
             </div>
 
             {/* ORDER FOOTER */}
@@ -109,12 +109,12 @@ const OrderHistory = () => {
                 </p>
               </div>
 
-              <Link
+              {/* <Link
                 to={`/order/${order._id}`}
                 className="px-6 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition"
               >
                 Order Details
-              </Link>
+              </Link> */}
             </div>
           </div>
         ))}

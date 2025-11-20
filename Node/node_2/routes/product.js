@@ -8,10 +8,11 @@ const route = Router();
 
 route.post("/",verifyToken,checkRole("seller"),upload.single('image'),productsController.createProduct);
 route.get("/", productsController.getAllProducts);
+route.get("/search",productsController.searchProduct)
 route.get("/:id", productsController.getProductById);
 route.delete("/:id",verifyToken,checkRole("seller","admin"), productsController.getProductAndDelete);
 route.put("/:id",verifyToken,checkRole("seller"), productsController.getProductAndUpdate);
 route.patch("/:id",verifyToken,checkRole("seller"), productsController.getProductAndUpdateField);
-route.get("/api/products", productsController.getProductByPagination);
+route.get("/pagination", productsController.getProductByPagination);
 
 export default route;

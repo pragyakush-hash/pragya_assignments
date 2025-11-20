@@ -194,7 +194,6 @@
 
 // export default ProductList;
 
-
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "./productSlice";
@@ -204,11 +203,9 @@ import ProductSlider from "./ProductSlider";
 import CategorySlider from "./CategorySlider";
 import ProductCard from "./ProductCard";
 
-
-
 const ProductList = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.product);
+  const { products, search } = useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -219,7 +216,7 @@ const ProductList = () => {
   };
 
   if (!products || products.length === 0) {
-    return <p className="text-center mt-10">Loading products...</p>;
+    return <p className="text-3xl font-bold text-amber-700 mb-4 text-center mt-10">No Products found...</p>;
   }
 
   // Filters
@@ -233,15 +230,21 @@ const ProductList = () => {
 
   return (
     <div className="mt-6">
+      {search !== true ? (
+        <>
+          <h2 className="text-3xl font-bold text-amber-700 mb-4 text-center">
+            Featured Categories
+          </h2>
+          <HeroSlider slides={heroSlides} />
 
-      <h2 className="text-3xl font-bold text-amber-700 mb-4 text-center">
-        Featured Categories
-      </h2>
-      <HeroSlider slides={heroSlides} />
+          <h2 className="text-2xl font-bold text-amber-700 mt-10 text-center">
+            Trending Items
+          </h2>
+        </>
+      ) : (
+        ""
+      )}
 
-      <h2 className="text-2xl font-bold text-amber-700 mt-10 text-center">
-        Trending Items
-      </h2>
       <ProductSlider slides={secondSlider} handleAddToCart={handleAddToCart} />
 
       <h2 className="text-3xl font-bold text-amber-700 mt-10 text-center">
@@ -281,4 +284,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
