@@ -303,164 +303,164 @@
 
 
 
-Golden Rule 1: Always Remember This Simple Order
+// Golden Rule 1: Always Remember This Simple Order
 
-You only need to remember 7 groups, not 40 operators.
+// You only need to remember 7 groups, not 40 operators.
 
-✔ 1. ()
-✔ 2. ++, -- (prefix), !, typeof
-✔ 3. * , / , %
-✔ 4. + , -
-✔ 5. < , > , <= , >=
-✔ 6. == , ===
-✔ 7. && → ||
-✔ 8. = (assignment)
+// ✔ 1. ()
+// ✔ 2. ++, -- (prefix), !, typeof
+// ✔ 3. * , / , %
+// ✔ 4. + , -
+// ✔ 5. < , > , <= , >=
+// ✔ 6. == , ===
+// ✔ 7. && → ||
+// ✔ 8. = (assignment)
 
-That's it.
-
-
-
-
-
-✅ Truth about || and && return values
-1. || (OR) returns the FIRST truthy value
-
-OR operator does NOT always return truthy values, it returns:
-
-✔ The first truthy value
-
-OR
-
-✔ The last value if ALL are falsy
-Examples:
-console.log(0 || 5);        // 5  (because 5 is first truthy)
-console.log("" || "hello"); // hello
-console.log(null || "x");   // x
-console.log(undefined || 0);// 0 (0 is falsy but it's the last)
-console.log(false || 0);    // 0 (both falsy → last returned)
-
-❗ So OR returns truthy OR falsy, depending on the situation.
-2. && (AND) returns the FIRST falsy value
-
-AND operator does NOT always return falsy values, it returns:
-
-✔ The first falsy value
-
-OR
-
-✔ The last value if ALL are truthy
-Examples:
-console.log(5 && 10);          // 10 (both truthy → last returned)
-console.log("hello" && 0);     // 0 (first falsy)
-console.log(1 && null);        // null (first falsy)
-console.log(true && "yes");    // yes (all truthy)
-console.log("A" && "B" && "C") // C
-
-❗ So AND returns truthy OR falsy, depending on the situation.
+// That's it.
 
 
 
 
 
-OR (||) AND (&&) operator question for practice
+// ✅ Truth about || and && return values
+// 1. || (OR) returns the FIRST truthy value
 
-console.log(0 || 5);
-console.log("" || "hello");
-console.log(null || undefined || "JS" || 0);
-console.log(null || undefined || "0" || 0);
-console.log(false && "yes");
-console.log(5 && 0 && 10);
-console.log(0 && 10 && 10);
-console.log(15 && 120 && 10);
-console.log(5 && 10 && 20);
-console.log("hi" || 0 || null);
-console.log("hi" && 0 || 5);
-console.log(0 && 5 || 10);
-console.log(null || false && "abc");
-console.log(1 && 2 && 3 || 4);
-console.log(0 || 1 && 2);
-console.log("" && 5 || "done");
-console.log(10 || (0 && 5));
-console.log((null && 5) || (0 && "x") || 100);
-console.log(null || 0 || 100)
-console.log("a" && "" || "b" && 0 || "c");
-console.log(""|| 0 || "c")
-console.log((1 || 0) && (0 || 2) && ("" || 3));
-console.log(1 && 2 && 3)
-console.log(false || false || false && true || "JS");
-console.log(false || false || false  || "JS");
-console.log((false && 10) || (0 || "hello") && ("" || 5));
-console.log(false  ||   5);
+// OR operator does NOT always return truthy values, it returns:
 
+// ✔ The first truthy value
 
-Just remember this simple line:
+// OR
 
-( ) → Unary → * / → + - → Comparisons → Equality → && → || → =
+// ✔ The last value if ALL are falsy
+// Examples:
+// console.log(0 || 5);        // 5  (because 5 is first truthy)
+// console.log("" || "hello"); // hello
+// console.log(null || "x");   // x
+// console.log(undefined || 0);// 0 (0 is falsy but it's the last)
+// console.log(false || 0);    // 0 (both falsy → last returned)
 
-This is the “JS PEMDAS” with logic added.
-()      → 1st  
-!, ++   → 2nd  
-* /     → 3rd  
-+ -     → 4th  
-> <     → 5th  
-== ===  → 6th  
-&&      → 7th  
-||      → 8th  
-=       → LAST
+// ❗ So OR returns truthy OR falsy, depending on the situation.
+// 2. && (AND) returns the FIRST falsy value
 
+// AND operator does NOT always return falsy values, it returns:
 
-🧠 Highest-level memory trick (super short)
-“BRAHMA SUTRA” LINE (remember this sentence)
+// ✔ The first falsy value
 
-👉 Brackets, Unary, Multiply, Add, Compare, Equality, AND, OR, Assign
+// OR
 
-Or simply:
+// ✔ The last value if ALL are truthy
+// Examples:
+// console.log(5 && 10);          // 10 (both truthy → last returned)
+// console.log("hello" && 0);     // 0 (first falsy)
+// console.log(1 && null);        // null (first falsy)
+// console.log(true && "yes");    // yes (all truthy)
+// console.log("A" && "B" && "C") // C
 
-BU-MACE-AOA
-
-Brackets
-
-Unary
-
-Multiply / Divide
-
-Add / Subtract
-
-Compare (< > <= >=)
-
-Equality (== ===)
-
-AND (&&)
-
-OR (||)
-
-Assign (=)
-
-Try saying:
-“BU-MACE-AOA”
-It sticks permanently.
+// ❗ So AND returns truthy OR falsy, depending on the situation.
 
 
 
-important  //
 
 
-What does typeof return for a function?
+// OR (||) AND (&&) operator question for practice
 
-typeof always returns a string describing the type.
+// console.log(0 || 5);
+// console.log("" || "hello");
+// console.log(null || undefined || "JS" || 0);
+// console.log(null || undefined || "0" || 0);
+// console.log(false && "yes");
+// console.log(5 && 0 && 10);
+// console.log(0 && 10 && 10);
+// console.log(15 && 120 && 10);
+// console.log(5 && 10 && 20);
+// console.log("hi" || 0 || null);
+// console.log("hi" && 0 || 5);
+// console.log(0 && 5 || 10);
+// console.log(null || false && "abc");
+// console.log(1 && 2 && 3 || 4);
+// console.log(0 || 1 && 2);
+// console.log("" && 5 || "done");
+// console.log(10 || (0 && 5));
+// console.log((null && 5) || (0 && "x") || 100);
+// console.log(null || 0 || 100)
+// console.log("a" && "" || "b" && 0 || "c");
+// console.log(""|| 0 || "c")
+// console.log((1 || 0) && (0 || 2) && ("" || 3));
+// console.log(1 && 2 && 3)
+// console.log(false || false || false && true || "JS");
+// console.log(false || false || false  || "JS");
+// console.log((false && 10) || (0 || "hello") && ("" || 5));
+// console.log(false  ||   5);
 
-JavaScript has a special rule:
 
-🔥 Every function returns "function" with typeof
+// Just remember this simple line:
 
-(including arrow functions, normal functions, async functions, generator functions)
+// ( ) → Unary → * / → + - → Comparisons → Equality → && → || → =
 
-Example:
+// This is the “JS PEMDAS” with logic added.
+// ()      → 1st  
+// !, ++   → 2nd  
+// * /     → 3rd  
+// + -     → 4th  
+// > <     → 5th  
+// == ===  → 6th  
+// &&      → 7th  
+// ||      → 8th  
+// =       → LAST
 
-typeof function() {}      // "function"
-typeof () => {}           // "function"
-typeof async () => {}     // "function"
-typeof class X {}         // "function"
+
+// 🧠 Highest-level memory trick (super short)
+// “BRAHMA SUTRA” LINE (remember this sentence)
+
+// 👉 Brackets, Unary, Multiply, Add, Compare, Equality, AND, OR, Assign
+
+// Or simply:
+
+// BU-MACE-AOA
+
+// Brackets
+
+// Unary
+
+// Multiply / Divide
+
+// Add / Subtract
+
+// Compare (< > <= >=)
+
+// Equality (== ===)
+
+// AND (&&)
+
+// OR (||)
+
+// Assign (=)
+
+// Try saying:
+// “BU-MACE-AOA”
+// It sticks permanently.
+
+
+
+// important  //
+
+
+// What does typeof return for a function?
+
+// typeof always returns a string describing the type.
+
+// JavaScript has a special rule:
+
+// 🔥 Every function returns "function" with typeof
+
+// (including arrow functions, normal functions, async functions, generator functions)
+
+// Example:
+
+// typeof function() {}      // "function"
+// typeof () => {}           // "function"
+// typeof async () => {}     // "function"
+// typeof class X {}         // "function"
 
 
 
