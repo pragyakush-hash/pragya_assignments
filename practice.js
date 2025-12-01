@@ -460,10 +460,24 @@
 // typeof function() {}      // "function"
 // typeof () => {}           // "function"
 // typeof async () => {}     // "function"
-// typeof class X {}         // "function"
+// // typeof class X {}         // "function"
+
+// const arr = [1,2,3,4]
+// console.log(arr.map(val=>val%2===1?"odd":"even"))
+
+// const arr = [1,2,3];
+// console.log(arr.map((x, i) => ({index: i, value: x}))); // [{index:0,value:1},{index:1,values:2}]
 
 
+// const array = [[1,2], [3,4], [5]];
+// console.log(array.flat())
 
+// const result = array.map((value,i)=>value[0])
+// console.log(result)
 
-
+// const result = [].concat(...array.map((x)=>x))
+// console.log(result)
+// const arr = ["a", "b", "c"];
+const arr1 = [1, 2, 3];
+console.log(arr1.map(() => arr1));
 
