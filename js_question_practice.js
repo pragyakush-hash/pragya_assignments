@@ -36,17 +36,14 @@
 // const names= users.map(user=>user.name)
 // console.log(names)
 
-
 // //forEach
 
 // const values = [10,20,30,40]
 // values.forEach((n)=>console.log(n))
 
-
 // const numbers = [1,2,3,4]
 // const result = numbers.forEach((n)=>n*2)
 // console.log(result) //undefined
-
 
 // const doubled = []
 // numbers.forEach((n)=>doubled.push(n*2))
@@ -66,18 +63,15 @@
 
 // console.log(arr);
 
-
 // 3.WHAT DOES PUSH() AND POP() DO?
 
 // push() adds elements at the end of an array and returns new length.
 // pop() removes the last element of an array and returns the removed element.
 
-
 // const arr = [1, 2, 3];
 // arr.push(4);
 
 // console.log(arr); // [1, 2, 3, 4]
-
 
 // const names = ["Amit", "Riya"];
 
@@ -85,7 +79,6 @@
 
 // console.log(names);     // ["Amit", "Riya", "Karan", "Sia"]
 // console.log(newLength); // 4
-
 
 // const arr2 = [10, 20, 30];
 
@@ -105,7 +98,7 @@
 // slice() copies part of an array without changing it,
 // while splice() modifies the original array by adding, removing, or replacing elements.
 
-// example of slice - 
+// example of slice -
 // const arr = [10, 20, 30, 40];
 
 // const result = arr.slice(1, 3);
@@ -115,8 +108,7 @@
 // console.log(arr.slice(2))
 // console.log(arr.slice(3))
 
-
-// example of splice 
+// example of splice
 
 // // array.splice(start, deleteCount, item1, item2, ...)
 
@@ -135,14 +127,12 @@
 
 // console.log(arr2);   // [10, 20, 30, 40]
 
-
 // //Replace items
 // const arr3 = [1, 2, 3];
 
 // arr3.splice(1, 1, 99);
 
 // console.log(arr3); // [1, 99, 3]
-
 
 // //practice question slice() vs splice()
 
@@ -170,7 +160,6 @@
 // const y = arr6.splice(-2, 1);
 // console.log(y, arr6);//[ 7 ] [ 9, 8, 6 ]
 
-
 // const arr7 = [1, 2, 3, 4];
 // arr7.slice(1, 3).push(100);
 // console.log(arr7); //[ 1, 2, 3, 4 ]
@@ -179,7 +168,6 @@
 // const removed1 = arr8.splice(1, 0, "new");
 // console.log(removed1, arr8);//[] [ 'x', 'new', 'y', 'z' ]
 
-
 // const arr9 = [1, 2, 3, 4, 5];
 // arr9.splice(1, 3, 99);
 // console.log(arr9); //[ 1, 99, 5 ]
@@ -187,13 +175,10 @@
 // const arr10 = ["A", "B", "C", "D"];
 // const a = arr10.slice(1, 2);
 // const b = arr10.splice(1, 2);
-// console.log(a, b, arr10); 
+// console.log(a, b, arr10);
 // //[ 'B' ] [ 'B', 'C' ] [ 'A', 'D' ]
 // console.log(arr10.slice(1, 2),"hello1")
 // console.log(arr10.splice(1, 2),"hello2")
-
-
-
 
 // // const a = [1, 2, 3, 4, 5];
 // // console.log(a.slice(1, 3)); // [2,3]
@@ -203,7 +188,6 @@
 
 // // const a = [7, 8, 9];
 // // console.log(a.slice(-1));//[9]
-
 
 // // const a = [11, 22, 33, 44, 55];
 // // console.log(a.slice(-3));//[ 33, 44, 55 ]
@@ -217,23 +201,19 @@
 // --------------------------
 //     // const a = [100, 200, 300, 400];
 //     // console.log(a.slice(5));//[]
-    
+
 // //     const a = [1, 2, 3];
 // // console.log(a.slice(0, 10));//[ 1, 2, 3 ]
 
-
-// //SPLICE() Practice 
+// //SPLICE() Practice
 
 // // const a1 = [1, 2, 3, 4];
 // // console.log(a1.splice(1, 2)); //[ 2, 3 ]
 // // console.log(a1);//[ 1, 4 ]
 
-
 // // const a = [10, 20, 30];
 // // console.log(a.splice(0, 1));//[ 10 ]
 // // console.log(a);//[ 20, 30 ]
-
-
 
 // 5.HOW TO CHECK IF A VARIABLE IS AN ARRAY?
 
@@ -242,12 +222,9 @@
 // ✔ Works in all modern browsers
 // ✔ Correct even when arrays come from different frames/iframes
 
-
 // 6. WHAT DOES THE LENGTH PROPERTY RETURN?
 
 // The length property returns the number of elements in an array, which is the highest index + 1. It includes empty slots and updates dynamically as items are added or removed (except delete).
-
-
 
 // 7.HOW TO CONVERT AN ARRAY TO A STRING?
 
@@ -266,7 +243,6 @@
 // const arr = [1, 2, 3];
 // console.log(arr.join()); // "1,2,3"
 
-
 // 3. Using String()
 
 // Works similarly to toString().
@@ -282,9 +258,7 @@
 // const arr = ["a", "b", "c"];
 // console.log(JSON.stringify(arr)); // '["a","b","c"]'
 
-
 // Useful when sending data to backend.
-
 
 // ➕ 5. Convert each element and then concatenate
 
@@ -293,11 +267,9 @@
 // const arr = [1, 2, 3];
 // console.log(arr + ""); // "1,2,3"
 
-
 // Using + "" forces type-coercion.
 
 // You can convert an array to a string using toString(), join(), String(), or JSON.stringify(). The most flexible method is join() because it allows custom separators.
-
 
 // 8. What is array destructuring?
 
@@ -316,7 +288,6 @@
 // ✔ cleaner
 // ✔ easier to read
 // ✔ useful in React (props, useState)
-
 
 // Examples of Array Destructuring
 // 1️⃣ Basic destructuring
@@ -370,14 +341,12 @@
 // 7️⃣ Destructuring in functions (React useState example)
 // const [count, setCount] = useState(0);
 
-
 // React hooks always use array destructuring.
 
 // 🎯 Interview Answer
 
 // Array destructuring is a syntax that allows you to unpack values from an array into individual variables easily. It supports skipping values, default values, nested arrays, rest operator, and even swapping variables.
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 // // const arr = [2, 4, 6];
 // // const result = arr.map(x => x / 2);
 // // console.log(result) // [1,2,3]
@@ -396,7 +365,6 @@
 
 // // const result = users.map((values)=>values.age)
 // // console.log(result)
-
 
 // // console.log([null, undefined, 5].map(x => x)); // [ null, undefined, 5 ]
 
@@ -437,21 +405,17 @@
 // // ];
 // // console.log(users.filter((user)=>user.age > 18))
 
-
 // // const arr = [1, 2, 3, 4];
 // // console.log(arr.filter(( x,i) => i % 2 === 1));
 
-
 // // const array = [0, 1, false, 2, "", 3, null]
 // // console.log(array.filter((val)=>val)) //remove falsy values
-
 
 // // const array = [0, 1, false, 2, "", 3, null]
 // // console.log(array.filter((val)=>!val)) // !-> not for falsy values
 
 // // const names = ["Aman", "Ravi", "Ankit", "Sohan"];
 // // console.log(names.filter((name)=>name.startsWith('A',0)))
-
 
 // //What does includes() do?
 
@@ -462,14 +426,12 @@
 // ✔ Syntax
 // array.includes(value, startIndex)
 
-
 // value → the item you want to search
 
 // startIndex (optional) → from which index to start searching (default = 0)
 
 // Using Start Index
 // console.log(arr.includes(2, 2));
-
 
 // Output: false
 // Because search starts from index 2, and from index 2 onward, 2 is not found.
@@ -478,17 +440,13 @@
 // const name = "javascript";
 // console.log(name.includes("java"));
 
-
 // ✔ Output: true
 
 // Example 2: Case-sensitive
 // console.log(name.includes("Java"));
 
-
 // ❌ Output: false
 // (Because J is capital — includes is case sensitive)
-
-
 
 // SECTION 2: BASIC STRING QUESTIONS (FRESHER LEVEL)
 
@@ -504,7 +462,6 @@
 // spaces → "hello world"
 
 // even emojis → "😀🔥"
-
 
 // 🔥 1. String Creation Methods
 // Method	Description
@@ -576,8 +533,6 @@
 
 // JavaScript Strings come with methods for searching, slicing, formatting, modifying, padding, trimming, matching, and Unicode handling. They are immutable, so all methods return new strings.
 
-
-
 // slice() vs substring() vs substr() — with examples and interview-ready explanations.
 
 // 🔥 1. slice(start, end)
@@ -589,14 +544,12 @@
 // Example:
 // "JavaScript".slice(4, 10)
 
-
 // Output:
 
 // Script
 
 // Negative index:
 // "JavaScript".slice(-6)
-
 
 // Output:
 
@@ -611,7 +564,6 @@
 // Example:
 // "JavaScript".substring(4, 10)
 
-
 // Output:
 
 // Script
@@ -619,14 +571,12 @@
 // Negative index becomes 0:
 // "JavaScript".substring(-3, 4)
 
-
 // Output:
 
 // Java
 
 // Swaps values:
 // "JavaScript".substring(10, 4)
-
 
 // Output:
 
@@ -641,14 +591,12 @@
 // Example:
 // "JavaScript".substr(4, 6)
 
-
 // Output:
 
 // Script
 
 // Negative index:
 // "JavaScript".substr(-6, 6)
-
 
 // Output:
 
@@ -660,7 +608,6 @@
 // substring() → does not support negative, swaps start & end.
 // substr() → 2nd argument is length; deprecated.
 
-
 // //How to reverse a string?
 
 // const str = 'pragya'
@@ -670,12 +617,10 @@
 // }
 // console.log(ans)
 
-
 // /*console.log("JavaScript".includes("script"));
 // console.log([NaN].includes(NaN));
 // const arr = ["a", "b", "c", "d"];
 // console.log(arr.includes("a", 1));*/
-
 
 // //2. Using split(), reverse(), join() (Most common)
 // // const str = 'pragya';
@@ -691,14 +636,13 @@
 // // }
 // // console.log(result);
 
-
-
-
-
-
-
-
-
-
-
-
+// var a = 12;
+// console.log(a * 12);
+// console.log(a ** 2);
+//
+// "use strict";
+// function test() {
+//   salary = 123654;
+//   console.log(salary);
+// }
+// test();
