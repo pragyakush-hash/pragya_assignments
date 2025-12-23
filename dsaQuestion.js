@@ -211,3 +211,30 @@
 
 // const result = checkSquare([1, 2, 4, 2], [1, 4, 4, 16]);
 // console.log(result);
+
+// const input = ["apple", "orange", "banana", "apple", "banana"];
+
+// const count = input.reduce((acc, item) => {
+//   acc[item] = (acc[item] || 0) + 1;
+//   return acc;
+// }, {});
+// console.log(count);
+
+// const removeDUplicate = [];
+
+// for (let item of input) {
+//   if (!removeDUplicate.includes(item)) {
+//     removeDUplicate.push(item);
+                                                                                                                                                         
+//   }
+// }
+// console.log(removeDUplicate);
+// console.log(parseInt('78F'))
+// console.log(
+//   [1, 2, 3, 4].map((e) => {
+//     if (e > 0) return;
+//     return e * 10;
+//   })
+// );clg
+// console.log([]===[]) 
+
