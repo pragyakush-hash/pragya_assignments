@@ -646,3 +646,8 @@
 //   console.log(salary);
 // }
 // test();
+
+// Missing number (1–n)
+// Input: [1,2,4,5]
+// Output: 3
+

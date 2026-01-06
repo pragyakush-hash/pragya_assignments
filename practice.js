@@ -526,7 +526,7 @@
 //If a funtion call itself then there must be an end point.
 
 // let counter = 1;
-// function demo(number) { 
+// function demo(number) {
 //   if (counter > number) {
 //     return;
 //   }
@@ -598,7 +598,7 @@
 //bubble sort
 
 // function bubbleSorting(array) {
-//   for (let i = array.length; i > 0; i--) { 
+//   for (let i = array.length; i > 0; i--) {
 //     for (let j = 0; j < i; j++) {
 //       if (array[j] > array[j + 1]) {
 //         [array[j], array[j + 1]] = [array[j + 1], array[j]];
@@ -611,5 +611,314 @@
 // const res = bubbleSorting([5, 3, 4, 1, 2, 8, 6, 7]);
 // console.log(res);
 
+//Selection sort
 
-//Selection sort 
+// let str = 'pragya'.split("");
+// // console.log(str)
+//     let result =[]
+
+// for(let i=str.length-1;i>=0;i--){
+// result.push(str[i])
+//     // console.log(str[i])
+// }
+// console.log(result.join(""))
+
+// let array = [1,2,5,4,3,6,88,33,44,63,5,7,77,22,3,44,89]
+// let arraySorted = array.sort()
+// console.log(arraySorted)
+
+// let secongLargetNUmber = 0;
+
+// for(let i=0;i<arraySorted.length-1;i++){
+//     if(secongLargetNUmber<arraySorted[i]){
+//         secongLargetNUmber = arraySorted[i]
+//     }
+// }
+// console.log(secongLargetNUmber)
+
+// let array = [1, 2, 5, 4, 3, 6, 88, 33, 44, 63, 5, 7, 77, 22, 3, 44, 89];
+
+// let larget = -Infinity;
+// let secondLarget = -Infinity;
+
+// for (let num of array) {
+//   if (num > larget) {
+//     secondLarget = larget;
+//     larget = num;
+//   } else if (num > secondLarget && num !== larget) {
+//     secondLarget = num;
+//   }
+// }
+// console.log(secondLarget)
+
+// function rotateArray(arr,rotatedBy){
+//     const n  = arr.length;
+//     rotatedBy %= n;
+
+//     return arr.slice(rotatedBy).concat(arr.slice(0,rotatedBy));
+// }
+
+// const originalArray = [1,2,3,4,5]
+// const rotatedArray = rotateArray(originalArray, 3);
+// console.log(rotatedArray);
+
+//Input: [0,1,0,3,12]
+
+// let arr = [0, 1, 0, 3, 12];
+// let result = [];
+// let allZeros = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (arr[i] != 0) {
+//     result.push(arr[i]);
+//   } else {
+//     allZeros.push(arr[i]);
+//   }
+// }
+// let ans = [...result,...allZeros]
+
+// console.log(ans)
+// console.log(result)
+// console.log(allZeros)
+
+// Intersection of arrays
+// Input: [1,2,3,4], [3,4,5,6]
+// Output: [3,4]
+
+// let arr1 = [1, 2, 3, 4];
+// let arr2 = [3, 4, 5, 6];
+
+// let result = [];
+// let intersection = [];
+
+// for (let num of arr1) {
+//   result.push(num);
+// }
+// console.log(result);
+// for (let i = 0; i < arr2.length; i++) {
+//   if (result.includes(arr2[i])) {
+//     intersection.push(arr2[i]);
+//   }
+// }
+
+// console.log(intersection);
+
+// Union of arrays
+// Input: [1,2,3], [3,4,5]
+// Output: [1,2,3,4,5]
+
+// let arr1 = [1,2,3]
+// let arr2 = [3,4,5]
+// let result = [...arr1]
+
+// for (let i = 0; i < arr2.length; i++) {
+//   if (!arr1.includes(arr2[i])) {
+//     result.push(arr2[i]);
+//   }
+// }
+// console.log(result)
+
+// Check sorted array
+// Input: [1,2,3,4,5]
+// Output: true
+
+// function checkSortedArray(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > arr[i + 1]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// console.log(checkSortedArray([1, 6, 3, 4, 5]));
+
+// Pairs with given sum
+// Input: [2,4,3,5,7], sum = 7
+// Output: [[2,5],[4,3]]
+
+//Task:
+
+//write a function transform to get below output
+
+//console.log(transform(x));//{name:'abe,age=45}
+
+// function transform(x) {
+//   return  x.reduce((acc, curr) => [{...acc, ...curr }], {});
+// }
+// var x = [{ name: "abe" }, { age: 45 }];
+// console.log(transform(x));
+
+// const result = Object.assign(...x);
+// console.log(result);
+
+// Array.prototype.gourav = function () {
+//   return this.filter((num) => num % 2 === 0);
+// };
+// var x = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// console.log(x.gourav());
+
+// need to print array of even num when gourav method is called.
+
+// Pairs with given sum
+// Input: [2,4,3,5,7], sum = 7// Output: [[2,5],[4,3]]
+
+// let arr = [2, 4, 3, 5, 7];
+// let ansArr = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//   for (let j = 1; j < arr.length - 1; j++) {
+//     if (arr[i] + arr[j] === 7) {
+//       ansArr.push([arr[i], arr[j]]);
+//     }
+//   }
+// }
+// console.log(ansArr);
+
+// Chunk array
+// Input: [1,2,3,4,5,6], size = 2
+// Output: [[1,2],[3,4],[5,6]]
+
+// Flatten array (1 level)
+// Input: [1,[2,3],[4,5]]
+// Output: [1,2,3,4,5]
+
+//let arr = [1, [2, 3], [4, 5]];
+
+// let result = arr.flat()
+// console.log(result)
+// let res = [];
+// for (let i = 0; i < arr.length; i++) {
+//   if (typeof arr[i] === "number") {
+//     res.push(arr[i]);
+//   } else {
+//     for (let j = 0; j < arr[i].length; j++) {
+//       res.push(arr[i][j]);
+//     }
+//   }
+// }
+
+// console.log(res);
+
+// using recursion
+
+// let arr = [1, [2, 3], [4, 5]];
+// let res = [];
+
+// function flated(arr) {
+//   for (let item of arr) {
+//     if (typeof item === "number") {
+//       res.push(item);
+//     } else {
+//       flated(item);
+//     }
+//   }
+//   return res;
+// }
+// flated(arr);
+// console.log(res);
+
+// Frequency count
+// Input: [1,2,2,3,3,3]
+// Output: {1:1, 2:2, 3:3}
+
+// let arr = [1, 1, 2, 2, 3, 3, 3];
+// let resultObj = {};
+
+// for (let count of arr) {
+//   resultObj[count] = (resultObj[count] || 0) + 1;
+// }
+// console.log(resultObj);
+
+// Remove duplicates
+// Input: [1,2,2,3,4,4]
+// Output: [1,3]
+
+// let arr = [1, 2, 2, 3, 4, 4];
+// let ans = [];
+// let result = {};
+// for (let count of arr) {
+//   result[count] = (result[count] || 0) + 1;
+// }
+// console.log(result);
+
+// for (let keys in result) {
+//   if (result[keys] === 1) {
+//     ans.push(Number(keys));
+//   }
+// }
+// console.log(ans);
+
+// Missing number (1–n)
+// Input: [1,2,4,5]
+// Output: 3
+
+// function findMissingNumber(arr) {
+//   const n = arr.length + 1;
+
+//   const expectedSum = (n * (n + 1)) / 2;
+
+//   const actualSum = arr.reduce((sum, current) => sum + current, 0);
+//   return expectedSum - actualSum;
+// }
+
+// const input = [1, 2, 3, 4, 5, 7];
+// const missingNumber = findMissingNumber(input);
+// console.log("Output Missing NUmber: " + missingNumber);
+
+// First non-repeating element
+// Input: [9,4,9,6,7,4]
+// Output: 6
+
+// const array = [9, 4, 9, 6, 7, 4];
+// const nonRepeatedVal = {};
+
+// for (let num of array) {
+//   nonRepeatedVal[num] = (nonRepeatedVal[num] || 0) + 1;
+// }
+
+// for(let keys in nonRepeatedVal){
+//     if(nonRepeatedVal[keys]===1){
+//          console.log(keys)
+//     }
+// }
+// console.log(nonRepeatedVal);
+
+// Even first, odd later
+// Input: [1,2,3,4,5,6]
+// Output: [2,4,6,1,3,5]
+
+let arr = [1, 2, 3, 4, 5, 6];
+// let even = [];
+// let odds = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (arr[i] % 2 === 0) {
+//     even.push(arr[i])
+//   }
+//   else{
+//     odds.push(arr[i])
+//   }
+// }
+// console.log([...even,...odds])
+// console.log(odds)
+
+// let pos = 0;
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (arr[i] % 2 === 0) {
+//     let temp = arr[i];
+//     arr[i] = arr[pos];
+//     arr[pos] = temp;
+//     pos++;
+//   }
+// }
+// console.log(arr)
+
+
+// Max subarray sum
+// Input: [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6
+
+
+
+
