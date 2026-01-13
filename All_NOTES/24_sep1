@@ -1,0 +1,9 @@
+console.log([] == []) // false
+Arrays are reference types. Each [] creates a new array in memory.
+Two different references are never equal unless compared with === or == to the same object.
+
+console.log([] == ![]) //true
+Step 1: ![] → false (because [] is truthy).
+Step 2: [] == false → During loose equality, [] becomes '' (empty string).
+Step 3: '' == false → converts '' to number 0 and false to 0.
+Step 4: 0 == 0 → ✅ true.
