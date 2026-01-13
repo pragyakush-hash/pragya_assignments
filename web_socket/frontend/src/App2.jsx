@@ -4,18 +4,20 @@ const App2 = () => {
   const [rows, setRows] = useState([]);
   const [filterText, setFilterText] = useState("");
   const [sortAsc, setSortAsc] = useState(true);
-  console.log(sortAsc,"sort asc")
+  console.log(sortAsc, "sort asc");
 
   useEffect(() => {
-    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+    const ws = new WebSocket(
+      "wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/bnbusdt@trade"
+    );
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data,"data..........");
+      console.log(data.data, "data..........");
       const newRow = {
-        symbol: data.s,
-        price: data.p,
-        time: new Date(data.T).toLocaleTimeString(),
+        symbol: data.data.s,
+        price: data.data.p,
+        time: new Date(data.data.T).toLocaleTimeString(),
       };
       setRows((prev) => [newRow, ...prev].slice(0, 20));
     };
@@ -47,7 +49,7 @@ const App2 = () => {
   }, []);
 
   const filterRows = rows.filter((row) =>
-    row.symbol.toLowerCase().includes(filterText.toLowerCase())
+    row.symbol?.toLowerCase().includes(filterText.toLowerCase())
   );
   console.log(filterRows, "filter rows");
 
@@ -55,7 +57,7 @@ const App2 = () => {
     sortAsc ? a.price - b.price : b.price - a.price
   );
 
-  console.log(sortedRows,"sorted by rows")
+  console.log(sortedRows, "sorted by rows");
 
   return (
     <div style={{ padding: "20px" }}>
@@ -81,10 +83,10 @@ const App2 = () => {
           </tr>
         </thead>
         <tbody>
+          {/* {sortedRows.map((row, index) => ( */}
           {/* {rows.map((row, index) => ( */}
-          {/* {filterRows.map((row, index) => ( */}
-          {sortedRows.map((row, index) => (
-            <tr key={row.symbol}>
+          {filterRows.map((row, index) => (
+            <tr key={row.E}>
               <td>{row.symbol}</td>
               <td>{row.price}</td>
               <td>{row.time}</td>
